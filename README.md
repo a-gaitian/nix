@@ -1,1 +1,1 @@
-# Library of Nix / NixOS / Home Manager modules
+# My library of NixOS / Home Manager modules
