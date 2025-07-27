@@ -1,28 +1,28 @@
-{ config, pkgs, ... }: let
+{ pkgs, ... }: let
 
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
+  home-manager = builtins.fetchGit {
+    url = "git@github.com:nix-community/home-manager.git";
+    ref = "release-25.05";
+  };
 
-#  gmodules = builtins.fetchGit {
-#    url = "https://github.com/a-gaitian/gmodules.git";
-#    rev = "1058f07761c577e7bb9e6484051afca55770633e";
-#  };
-  gmodules = import ../default.nix;
+  gmodules = builtins.fetchGit {
+    url = "https://github.com/a-gaitian/gmodules.git";
+    ref = "master";
+  };
+#  gmodules = ../default.nix;
 in {
   imports = [
     ./hardware.nix
-    gmodules.modules
+    gmodules
     (import "${home-manager}/nixos")
   ];
 
-  gmodules = {
-    shell.fish.enable = true;
-  };
-
-  home-manager.users.user = { pkgs, ... }: {
-    home.stateVersion = "25.05";
-    imports = [ gmodules.home-modules ];
-    gmodules = {
-      home.shell.fish.enable = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    users = {
+      user = { pkgs, ... }: {
+        home.stateVersion = "25.05";
+      };
     };
   };
 
@@ -31,9 +31,14 @@ in {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
       initialPassword = "pass";
+      shell = pkgs.fish;
     };
   };
 
-  # NEVER changes
+
+  gmodules = {
+    shell.fish.enableFor = [ "user" ];
+  };
+
   system.stateVersion = "25.05";
 }
