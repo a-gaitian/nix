@@ -33,3 +33,5 @@
 
 result/*
 *.qcow2
+
+example/flake.lock
