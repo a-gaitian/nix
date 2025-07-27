@@ -6,14 +6,13 @@
   };
 
   gmodules = builtins.fetchGit {
-    url = "https://github.com/a-gaitian/gmodules.git";
+    url = "git@github.com:a-gaitian/gmodules.git";
     ref = "master";
   };
-#  gmodules = ../default.nix;
 in {
   imports = [
     ./hardware.nix
-    gmodules
+    (import "${gmodules}/nixos")
     (import "${home-manager}/nixos")
   ];
 
