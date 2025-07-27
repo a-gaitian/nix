@@ -37,6 +37,7 @@ in {
 
   gmodules = {
     shell.fish.enableFor = [ "user" ];
+    desktop.hyprland-catpuccin.enableFor = [ "user" ];
   };
 
   system.stateVersion = "25.05";
