@@ -33,4 +33,11 @@
     usersConfig
       (if isDefault then users else usersArg)
       configFunc;
+
+  mkEnableOption = default: name: lib.mkOption {
+    type = lib.types.bool;
+    description = "Is ${name} enabled?";
+    inherit default;
+    example = !default;
+  };
 }

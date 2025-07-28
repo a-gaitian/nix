@@ -4,11 +4,13 @@
 
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
   };
 
   virtualisation.vmVariant.virtualisation = {
-    cores = 2;
-    memorySize = 2048;
+    cores = 4;
+    memorySize = 8192;
+    qemu.options = [
+      "-display gtk,gl=off,zoom-to-fit=on"
+    ];
   };
 }

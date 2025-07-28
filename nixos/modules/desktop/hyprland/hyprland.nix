@@ -10,7 +10,7 @@ in {
     monitor = mkOption {
       type = types.listOf types.str;
       description = "List of Hyprland 'monitor' values";
-      default = [ ];
+      default = [ ",preferred,auto,1" ];
       example = [ "DP-1, preferred, -1920x0, 1.5" ];
     };
     workspace = mkOption {
@@ -122,7 +122,7 @@ in {
 
         exec-once = [
           "swaync"
-          "xrandr --output DP-1 --primary"
+          "xrandr --output ${builtins.elemAt (builtins.split "," (if builtins.length cfg.monitor > 0 then builtins.elemAt cfg.monitor 0 else "")) 0} --primary"
         ];
 
         windowrule = [

@@ -40,8 +40,11 @@ in {
     shell.fish.enableFor = [ "user" ];
     desktop = {
       theme.catppuccin.enable = true;
-      hyprland.enableFor = [ "user" ];
+      hyprland = {
+        enableFor = [ "user" ];
+      };
     };
+    utilities.enableAll = true;
   };
 
   system.stateVersion = "25.05";
