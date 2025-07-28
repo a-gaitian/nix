@@ -5,11 +5,11 @@
     ref = "release-25.05";
   };
 
-#  gmodules = builtins.fetchGit {
-#    url = "git@github.com:a-gaitian/gmodules.git";
-#    ref = "master";
-#  };
-  gmodules = ../.;
+  gmodules = builtins.fetchGit {
+    url = "git@github.com:a-gaitian/gmodules.git";
+    ref = "master";
+  };
+#  gmodules = ../.;
 in {
   imports = [
     ./hardware.nix

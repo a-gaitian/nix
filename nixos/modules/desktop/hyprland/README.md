@@ -1,4 +1,4 @@
-# Hyprland in Catpuccin Macchiato
+# Hyprland
 ## Configurables
 - `gmodules.desktop.hyprland.monitor`
 - `gmodules.desktop.hyprland.workspace`
