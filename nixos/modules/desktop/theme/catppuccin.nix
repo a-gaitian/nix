@@ -2,10 +2,7 @@
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
   cfg = config.gmodules.desktop.theme.catppuccin;
-  catppuccinGit = builtins.fetchGit {
-    url = "git@github.com:catppuccin/nix.git";
-    ref = "main";
-  };
+
 in {
   options.gmodules.desktop.theme.catppuccin = {
     enable = mkEnableOption "Catppuccin Theme";
@@ -15,10 +12,6 @@ in {
     };
   };
 
-  imports = [
-    (import "${catppuccinGit}/modules/nixos")
-  ];
-
   config = mkIf cfg.enable {
     catppuccin = {
       enable = true;
@@ -26,10 +19,6 @@ in {
     };
 
     home-manager.users = glib.usersConfig glib.users (user: {
-      imports = [
-        (import "${catppuccinGit}/modules/home-manager")
-      ];
-
       catppuccin = {
         enable = true;
         flavor = cfg.flavor;

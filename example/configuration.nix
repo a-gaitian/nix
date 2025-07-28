@@ -5,16 +5,16 @@
     ref = "release-25.05";
   };
 
-  gmodules = builtins.fetchGit {
-    url = "git@github.com:a-gaitian/gmodules.git";
-    ref = "master";
+  catppuccin = builtins.fetchGit {
+    url = "git@github.com:catppuccin/nix.git";
   };
 #  gmodules = ../.;
 in {
   imports = [
     ./hardware.nix
-    (import "${gmodules}/nixos")
     (import "${home-manager}/nixos")
+    (import "${catppuccin}/modules/nixos")
+    (import "${gmodules}/nixos")
   ];
 
   home-manager = {
@@ -22,6 +22,9 @@ in {
     users = {
       user = { pkgs, ... }: {
         home.stateVersion = "25.05";
+        imports = [
+          (import "${catppuccin}/modules/home-manager")
+        ];
       };
     };
   };
