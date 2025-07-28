@@ -5,10 +5,11 @@
     ref = "release-25.05";
   };
 
-  gmodules = builtins.fetchGit {
-    url = "git@github.com:a-gaitian/gmodules.git";
-    ref = "master";
-  };
+#  gmodules = builtins.fetchGit {
+#    url = "git@github.com:a-gaitian/gmodules.git";
+#    ref = "master";
+#  };
+  gmodules = ../.;
 in {
   imports = [
     ./hardware.nix
@@ -17,7 +18,7 @@ in {
   ];
 
   home-manager = {
-    useGlobalPkgs = true;
+    useGlobalPkgs = false;
     users = {
       user = { pkgs, ... }: {
         home.stateVersion = "25.05";
@@ -37,7 +38,10 @@ in {
 
   gmodules = {
     shell.fish.enableFor = [ "user" ];
-    desktop.hyprland-catpuccin.enableFor = [ "user" ];
+    desktop = {
+      theme.catppuccin.enable = true;
+      hyprland.enableFor = [ "user" ];
+    };
   };
 
   system.stateVersion = "25.05";

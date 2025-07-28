@@ -1,16 +1,17 @@
 { lib, config }: rec {
 
+  users =
+    builtins.map
+      (user: user.name )
+      (
+        builtins.filter
+          (user: user.value.isNormalUser)
+          (lib.attrsToList config.users.users)
+      );
+
   types = {
     listOfUsers = lib.types.listOf (
-      lib.types.enum (
-        builtins.map
-          (user: user.name )
-          (
-            builtins.filter
-              (user: user.value.isNormalUser)
-              (lib.attrsToList config.users.users)
-          )
-      )
+      lib.types.enum (users)
     );
   };
 
@@ -27,4 +28,9 @@
         user: { name = user; value = configFunc user; }
       ) users
     );
+
+  usersConfigOrDefault = isDefault: usersArg: configFunc:
+    usersConfig
+      (if isDefault then users else usersArg)
+      configFunc;
 }

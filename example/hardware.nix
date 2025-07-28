@@ -6,4 +6,9 @@
     enable = true;
     enable32Bit = true;
   };
+
+  virtualisation.vmVariant.virtualisation = {
+    cores = 2;
+    memorySize = 2048;
+  };
 }
