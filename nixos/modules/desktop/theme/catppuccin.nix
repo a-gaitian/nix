@@ -4,6 +4,7 @@ let
   cfg = config.gmodules.desktop.theme.catppuccin;
   catppuccinGit = builtins.fetchGit {
     url = "git@github.com:catppuccin/nix.git";
+    ref = "main";
   };
 in {
   options.gmodules.desktop.theme.catppuccin = {
