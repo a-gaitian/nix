@@ -8,13 +8,18 @@
   catppuccin = builtins.fetchGit {
     url = "git@github.com:catppuccin/nix.git";
   };
-#  gmodules = ../.;
+
+  gaitian-nix = builtins.fetchGit {
+    url = "git@github.com:a-gaitian/nix.git";
+  };
+#  gaitian-nix = ../.;
 in {
   imports = [
     ./hardware.nix
     (import "${home-manager}/nixos")
     (import "${catppuccin}/modules/nixos")
-    (import "${gmodules}/nixos")
+    (import "${gaitian-nix}/gmodules")
+    (import "${gaitian-nix}/gmodules/theme/catppuccin.nix")
   ];
 
   home-manager = {
@@ -42,7 +47,6 @@ in {
   gmodules = {
     shell.fish.enableFor = [ "user" ];
     desktop = {
-      theme.catppuccin.enable = true;
       hyprland = {
         enableFor = [ "user" ];
       };

@@ -7,8 +7,8 @@
   };
 
   virtualisation.vmVariant.virtualisation = {
-    cores = 4;
-    memorySize = 8192;
+    cores = 2;
+    memorySize = 4096;
     qemu.options = [
       "-display gtk,gl=off,zoom-to-fit=on"
     ];

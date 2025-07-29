@@ -1,11 +1,14 @@
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
-  cfg = config.gmodules.desktop.theme.catppuccin;
-
+  cfg = config.gmodules.theme.catppuccin;
 in {
-  options.gmodules.desktop.theme.catppuccin = {
-    enable = mkEnableOption "Catppuccin Theme";
+  options.gmodules.theme.catppuccin = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Catppuccin Theme";
+      default = true;
+    };
     flavor = mkOption {
       type = types.enum [ "mocha" "macchiato" "frappe" "latte" ];
       default = "macchiato";
