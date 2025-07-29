@@ -16,8 +16,7 @@
 | SUPER + Alt + Left/Right Arrow   | Navigate workspaces             |
 | SUPER + 1-9                      | Go to workspace                 |
 | SUPER + Shift + 1-9              | Move window to workspace        |
-| SUPER + Tab                      | Overview                        |
-| SUPER + Shift + Tab              | Expo                            |
+| SUPER + Tab                      | Expo                            |
 |                                  |                                 |
 | SUPER + T                        | rofi                            |
 | SUPER + Enter                    | Terminal                        |

@@ -10,7 +10,7 @@ in {
     enable = mkEnableOption "kitty";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf (isDefault || cfg.enable) {
     home-manager.users."${user}" = {
       programs.kitty = {
         enable = true;

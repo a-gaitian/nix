@@ -36,22 +36,23 @@ in {
 
     services.xserver.enable = true;
     xdg.portal.enable = true;
-
     services.xserver.excludePackages = [ pkgs.xterm ];
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = ''${pkgs.greetd.tuigreet}/bin/tuigreet \
+            --cmd Hyprland \
+            --remember \
+            --time
+            '';
+          user = "greeter";
+        };
+      };
+    };
 
     programs.hyprland = {
       enable = true;
-    };
-
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "hyprland > /dev/null 2>&1";
-          user = user;
-        };
-        default_session = initial_session;
-      };
     };
 
     home-manager.users."${user}" = {
@@ -69,14 +70,10 @@ in {
 
       wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins; [
         hyprsplit
-        hyprspace
         hyprexpo
       ];
 
       programs.wlogout = {
-        enable = true;
-      };
-      programs.hyprlock = {
         enable = true;
       };
 
@@ -89,13 +86,12 @@ in {
         workspace = cfg.workspace;
 
         plugin = {
-          overview = {
-            exitOnClick = true;
-            exitOnSwitch = true;
-            switchOnDrop = true;
+          hyprsplit = {
+            num_workspaces = 4;
+            persistent_workspaces = true;
           };
           hyprexpo = {
-            workspace_method = "first 1";
+            columns = 2;
             gesture_positive = false;
           };
         };
@@ -113,6 +109,7 @@ in {
           "GDK_SCALE,1"
           "NIXOS_OZONE_WL,1"
           "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
           # Icons
           "XDG_DATA_DIRS,$XDG_DATA_DIRS:/home/${user}/.local/share"
@@ -160,7 +157,6 @@ in {
         };
 
         exec-once = [
-          "hyprlock || hyprctl dispatch exit"
           "swaync"
           "xrandr --output ${builtins.elemAt (builtins.split "," (if builtins.length cfg.monitor > 0 then builtins.elemAt cfg.monitor 0 else "")) 0} --primary"
         ];
@@ -229,36 +225,25 @@ in {
 
             ##### Workspace #####
 
-            "$mod, mouse_right,   workspace, +1"
-            "$mod, mouse_left,    workspace, -1"
+            "$mod, mouse_right,   split:workspace, r+1"
+            "$mod, mouse_left,    split:workspace, r-1"
 
-            "$mod $alt, right,    workspace, +1"
-            "$mod $alt, left,     workspace, -1"
+            "$mod $alt, right,    split:workspace, r+1"
+            "$mod $alt, left,     split:workspace, r-1"
 
-            "$mod, tab,           overview:toggle"
-            "$mod $move, tab,     hyprexpo:expo, toggle"
+            "$mod, tab,           hyprexpo:expo, toggle"
 
             # Workspace
-            "$mod, 1,             workspace, 1"
-            "$mod, 2,             workspace, 2"
-            "$mod, 3,             workspace, 3"
-            "$mod, 4,             workspace, 4"
-            "$mod, 5,             workspace, 5"
-            "$mod, 6,             workspace, 6"
-            "$mod, 7,             workspace, 7"
-            "$mod, 8,             workspace, 8"
-            "$mod, 9,             workspace, 9"
+            "$mod, 1,             split:workspace, 1"
+            "$mod, 2,             split:workspace, 2"
+            "$mod, 3,             split:workspace, 3"
+            "$mod, 4,             split:workspace, 4"
 
             # Workspace move
-            "$mod $move, 1,       movetoworkspace, 1"
-            "$mod $move, 2,       movetoworkspace, 2"
-            "$mod $move, 3,       movetoworkspace, 3"
-            "$mod $move, 4,       movetoworkspace, 4"
-            "$mod $move, 5,       movetoworkspace, 5"
-            "$mod $move, 6,       movetoworkspace, 6"
-            "$mod $move, 7,       movetoworkspace, 7"
-            "$mod $move, 8,       movetoworkspace, 8"
-            "$mod $move, 9,       movetoworkspace, 9"
+            "$mod $move, 1,       split:movetoworkspace, 1"
+            "$mod $move, 2,       split:movetoworkspace, 2"
+            "$mod $move, 3,       split:movetoworkspace, 3"
+            "$mod $move, 4,       split:movetoworkspace, 4"
           ];
 
           bindm = [
