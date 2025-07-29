@@ -1,22 +1,23 @@
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
+  user = config.gmodules.home.user;
   terminalCfg = config.gmodules.desktop.terminal;
   cfg = terminalCfg.kitty;
   isDefault = terminalCfg.default == "kitty";
 in {
   options.gmodules.desktop.terminal.kitty = {
-    enableFor = glib.mkEnableForOption "kitty";
+    enable = mkEnableOption "kitty";
   };
 
-  config = {
-    home-manager.users = glib.usersConfigOrDefault isDefault cfg.enableFor (user: {
+  config = mkIf cfg.enable {
+    home-manager.users."${user}" = {
       programs.kitty = {
         enable = true;
         font = {
           name = config.gmodules.desktop.terminal.font.family;
         };
       };
-    });
+    };
   };
 }

@@ -1,14 +1,15 @@
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
+  user = config.gmodules.home.user;
   cfg = config.gmodules.desktop.swaync;
 in {
   options.gmodules.desktop.swaync = {
-    enableFor = glib.mkEnableForOption "swaync";
+    enable = mkEnableOption "swaync";
   };
 
-  config = mkIf (length cfg.enableFor > 0) {
-    home-manager.users = glib.usersConfig cfg.enableFor (user: {
+  config = mkIf cfg.enable {
+    home-manager.users."${user}" = {
       services.swaync = {
         enable = true;
         settings = {
@@ -41,6 +42,6 @@ in {
           };
         };
       };
-    });
+    };
   };
 }

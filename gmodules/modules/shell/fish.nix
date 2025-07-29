@@ -1,15 +1,16 @@
 { pkgs, config, lib, glib, ... }:
 let
+  user = config.gmodules.home.user;
   cfg = config.gmodules.shell.fish;
 in {
 
   options.gmodules.shell.fish = {
-    enableFor = glib.mkEnableForOption "fish";
+    enable = lib.mkEnableOption "fish";
   };
 
-  config = lib.mkIf (lib.length cfg.enableFor > 0) {
+  config = lib.mkIf cfg.enable {
     programs.fish.enable = true;
-    home-manager.users = glib.usersConfig cfg.enableFor (user: {
+    home-manager.users."${user}" = {
       programs = {
         fish.enable = true;
         fish.shellInit = ''
@@ -46,6 +47,6 @@ in {
 
         kb = "kubectl";
       };
-    });
+    };
   };
 }

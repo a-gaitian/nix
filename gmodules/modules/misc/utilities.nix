@@ -1,6 +1,7 @@
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
+  user = config.gmodules.home.user;
   cfg = config.gmodules.utilities;
 in {
   options.gmodules.utilities = {
@@ -25,13 +26,13 @@ in {
       ++ lib.optional cfg.p7z p7zip-rar
       ++ lib.optional cfg.file file;
 
-    home-manager.users = glib.usersConfig glib.users (user: {
+    home-manager.users."${user}" = {
       programs.git = mkIf cfg.git {
         enable = true;
       };
       programs.btop = mkIf cfg.btop {
         enable = true;
       };
-    });
+    };
   };
 }

@@ -2,12 +2,12 @@
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
-  globalCfg = config;
+  user = config.gmodules.home.user;
   cfg = config.gmodules.desktop.hyprland;
   terminal = config.gmodules.desktop.terminal.default;
 in {
   options.gmodules.desktop.hyprland = {
-    enableFor = glib.mkEnableForOption "hyprland";
+    enable = mkEnableOption "hyprland";
     monitor = mkOption {
       type = types.listOf types.str;
       description = "List of Hyprland 'monitor' values";
@@ -27,11 +27,11 @@ in {
     };
   };
 
-  config = mkIf (length cfg.enableFor > 0) {
+  config = mkIf cfg.enable {
     gmodules.desktop = {
       headless = false;
-      rofi.enableFor = cfg.enableFor;
-      swaync.enableFor = cfg.enableFor;
+      rofi.enable = true;
+      swaync.enable = true;
     };
 
     services.xserver.enable = true;
@@ -48,13 +48,13 @@ in {
       settings = rec {
         initial_session = {
           command = "hyprland > /dev/null 2>&1";
-          user = builtins.elemAt glib.users 0;
+          user = user;
         };
         default_session = initial_session;
       };
     };
 
-    home-manager.users = glib.usersConfig cfg.enableFor (user: {
+    home-manager.users."${user}" = {
 
       qt.enable = true;
       gtk.enable = true;
@@ -274,6 +274,6 @@ in {
         bindl = , XF86AudioPlay, exec, playerctl next
         submap = reset
       '';
-    });
+    };
   };
 }

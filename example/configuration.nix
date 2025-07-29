@@ -45,10 +45,11 @@ in {
 
 
   gmodules = {
-    shell.fish.enableFor = [ "user" ];
+    home.user = "user";
+    shell.fish.enable = true;
     desktop = {
       hyprland = {
-        enableFor = [ "user" ];
+        enable = true;
       };
     };
     utilities.enableAll = true;

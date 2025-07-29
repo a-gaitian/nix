@@ -1,6 +1,7 @@
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
+  user = config.gmodules.home.user;
   cfg = config.gmodules.theme.catppuccin;
 in {
   options.gmodules.theme.catppuccin = {
@@ -21,7 +22,7 @@ in {
       flavor = cfg.flavor;
     };
 
-    home-manager.users = glib.usersConfig glib.users (user: {
+    home-manager.users."${user}" = {
       catppuccin = {
         enable = true;
         flavor = cfg.flavor;
@@ -53,6 +54,6 @@ in {
           '';
         };
       };
-    });
+    };
   };
 }
