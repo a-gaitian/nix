@@ -27,8 +27,11 @@ in {
   };
 
   config = mkIf (length cfg.enableFor > 0) {
-    gmodules.desktop.headless = false;
-    gmodules.desktop.rofi.enableFor = cfg.enableFor;
+    gmodules.desktop = {
+      headless = false;
+      rofi.enableFor = cfg.enableFor;
+      swaync.enableFor = cfg.enableFor;
+    };
 
     services.xserver.enable = true;
     xdg.portal.enable = true;
