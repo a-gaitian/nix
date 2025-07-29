@@ -1,3 +1,4 @@
+
 { pkgs, config, lib, glib, ... }:
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
@@ -42,6 +43,17 @@ in {
       enable = true;
     };
 
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "hyprland > /dev/null 2>&1";
+          user = builtins.elemAt glib.users 0;
+        };
+        default_session = initial_session;
+      };
+    };
+
     home-manager.users = glib.usersConfig cfg.enableFor (user: {
 
       qt.enable = true;
@@ -55,6 +67,19 @@ in {
         brightnessctl
       ];
 
+      wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins; [
+        hyprsplit
+        hyprspace
+        hyprexpo
+      ];
+
+      programs.wlogout = {
+        enable = true;
+      };
+      programs.hyprlock = {
+        enable = true;
+      };
+
       wayland.windowManager.hyprland.enable = true;
       wayland.windowManager.hyprland.settings =
           if cfg.overrideSettings != { }
@@ -62,6 +87,18 @@ in {
 
         monitor = cfg.monitor;
         workspace = cfg.workspace;
+
+        plugin = {
+          overview = {
+            exitOnClick = true;
+            exitOnSwitch = true;
+            switchOnDrop = true;
+          };
+          hyprexpo = {
+            workspace_method = "first 1";
+            gesture_positive = false;
+          };
+        };
 
         xwayland = {
           # Disable default scaling
@@ -74,7 +111,6 @@ in {
           # XWayland toolkit-specific scale
           # GDK 3/GTK 3 - integer will work, float may be ignored
           "GDK_SCALE,1"
-          "WLR_NO_HARDWARE_CURSORS,1"
           "NIXOS_OZONE_WL,1"
           "ELECTRON_OZONE_PLATFORM_HINT,wayland"
 
@@ -124,6 +160,7 @@ in {
         };
 
         exec-once = [
+          "hyprlock || hyprctl dispatch exit"
           "swaync"
           "xrandr --output ${builtins.elemAt (builtins.split "," (if builtins.length cfg.monitor > 0 then builtins.elemAt cfg.monitor 0 else "")) 0} --primary"
         ];
@@ -152,9 +189,10 @@ in {
 
         bind =
           [
-            # Apps
+            # General
             "$mod,  T,            exec, rofi -show drun"
             "$mod,  RETURN,       exec, ${terminal}"
+            "$mod,  ESCAPE,       exec, wlogout"
 
             # Special
             "$mod,  Q,            killactive"
@@ -197,6 +235,9 @@ in {
             "$mod $alt, right,    workspace, +1"
             "$mod $alt, left,     workspace, -1"
 
+            "$mod, tab,           overview:toggle"
+            "$mod $move, tab,     hyprexpo:expo, toggle"
+
             # Workspace
             "$mod, 1,             workspace, 1"
             "$mod, 2,             workspace, 2"
@@ -207,7 +248,6 @@ in {
             "$mod, 7,             workspace, 7"
             "$mod, 8,             workspace, 8"
             "$mod, 9,             workspace, 9"
-            "$mod, 0,             workspace, 10"
 
             # Workspace move
             "$mod $move, 1,       movetoworkspace, 1"
@@ -219,7 +259,6 @@ in {
             "$mod $move, 7,       movetoworkspace, 7"
             "$mod $move, 8,       movetoworkspace, 8"
             "$mod $move, 9,       movetoworkspace, 9"
-            "$mod $move, 0,       movetoworkspace, 10"
           ];
 
           bindm = [

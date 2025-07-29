@@ -14,11 +14,14 @@
 |                                  |                                 |
 | SUPER + Mouse Side Scroll        | Navigate workspaces             |
 | SUPER + Alt + Left/Right Arrow   | Navigate workspaces             |
-| SUPER + 1-0                      | Go to workspace                 |
-| SUPER + Shift + 1-0              | Move window to workspace        |
+| SUPER + 1-9                      | Go to workspace                 |
+| SUPER + Shift + 1-9              | Move window to workspace        |
+| SUPER + Tab                      | Overview                        |
+| SUPER + Shift + Tab              | Expo                            |
 |                                  |                                 |
-| SUPER + T                        | ROFI                            |
+| SUPER + T                        | rofi                            |
 | SUPER + Enter                    | Terminal                        |
+| SUPER + Esc                      | Logout                          |
 |                                  |                                 |
 | SUPER + Q                        | Kill window                     |
 | SUPER + F                        | Toggle window fullscreen        |
