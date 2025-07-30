@@ -9,10 +9,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home-manager.users."${user}" = {
-      programs.obsidian = {
-        enable = true;
-      };
-    };
+    environment.systemPackages = [ pkgs.obsidian ];
   };
 }

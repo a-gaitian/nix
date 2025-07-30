@@ -186,7 +186,7 @@ in {
         bind =
           [
             # General
-            "$mod,  T,            exec, rofi -show drun"
+            "$mod,  T,            exec, rofi -show combi -combi-modes drun,window,ssh -sidebar-mode"
             "$mod,  RETURN,       exec, ${terminal}"
             "$mod,  ESCAPE,       exec, wlogout"
 

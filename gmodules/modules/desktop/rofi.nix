@@ -13,6 +13,7 @@ in {
       programs.rofi = {
         enable = true;
         plugins = [ pkgs.rofi-calc ];
+        modes = [ "drun" "calc" "ssh" ];
         package = pkgs.rofi-wayland;
       };
     };
