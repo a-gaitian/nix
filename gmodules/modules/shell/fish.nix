@@ -44,8 +44,6 @@ in {
         ls = "eza -x --group-directories-first --icons=auto --classify=auto";
         ls-tree = "ls -T";
         ls-git = "git ls-files --modified --others --exclude-standard | ls -l --stdin";
-
-        kb = "kubectl";
       };
     };
   };

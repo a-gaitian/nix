@@ -5,7 +5,7 @@ let
 in {
 
   options.gmodules.network.mihomo = {
-    enable = lib.mkEnableOption "mihomo";
+    enable = mkEnableOption "mihomo";
   };
 
   config = mkIf cfg.enable {
