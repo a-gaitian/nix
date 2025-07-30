@@ -12,6 +12,7 @@ in {
 
   system.stateVersion = "24.05";
   nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   home-manager = {
     useGlobalPkgs = false;
@@ -103,4 +104,8 @@ in {
   nix.extraOptions = ''
     builders-use-substitutes = true
   '';
+
+  environment.systemPackages = with pkgs; [
+    openconnect
+  ];
 }

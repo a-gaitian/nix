@@ -71,10 +71,27 @@ in {
       wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins; [
         hyprsplit
         hyprexpo
+        hyprwinwrap
       ];
 
       programs.wlogout = {
         enable = true;
+      };
+
+      programs.cava = {
+        enable = true;
+        settings = {
+          general = {
+            sleep_timer = 3;
+          };
+          input = {
+            method = "pipewire";
+          };
+          output = {
+            orientation = "horizontal";
+            show_idle_bar_heads = 0;
+          };
+        };
       };
 
       wayland.windowManager.hyprland.enable = true;
@@ -93,6 +110,9 @@ in {
           hyprexpo = {
             columns = 2;
             gesture_positive = false;
+          };
+          hyprwinwrap = {
+              class = "kitty-bg";
           };
         };
 
@@ -158,6 +178,7 @@ in {
 
         exec-once = [
           "swaync"
+          "kitty -o background_opacity=0 --class=\"kitty-bg\" --start-as fullscreen -e cava"
           "xrandr --output ${builtins.elemAt (builtins.split "," (if builtins.length cfg.monitor > 0 then builtins.elemAt cfg.monitor 0 else "")) 0} --primary"
         ];
 
@@ -189,6 +210,7 @@ in {
             "$mod,  T,            exec, rofi -show combi -combi-modes drun,window,ssh -sidebar-mode"
             "$mod,  RETURN,       exec, ${terminal}"
             "$mod,  ESCAPE,       exec, wlogout"
+            "$mod,  SPACE,        exec, background_blur"
 
             # Special
             "$mod,  Q,            killactive"
