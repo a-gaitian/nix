@@ -48,6 +48,10 @@ in {
           name = "BreezeX-RosePine-Linux";
           size = 24;
         };
+        iconTheme = {
+          package = pkgs.adwaita-icon-theme;
+          name = "Adwaita";
+        };
         gtk4.extraConfig = {
           Settings = ''
             gtk-application-prefer-dark-theme=1

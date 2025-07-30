@@ -37,3 +37,5 @@ result/*
 example/flake.lock
 
 gmodules/modules/network/mihomo/config.yaml
+
+**/hardware.nix
