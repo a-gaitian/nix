@@ -35,3 +35,5 @@ result/*
 *.qcow2
 
 example/flake.lock
+
+gmodules/modules/network/mihomo/config.yaml
