@@ -54,6 +54,7 @@ in {
         hideDefaultDesktop = true;
       };
       kubernetes.enable = true;
+      podman.enable = true;
     };
     network.mihomo.enable = true;
     app = {
@@ -107,5 +108,8 @@ in {
 
   environment.systemPackages = with pkgs; [
     openconnect
+    obs-studio
+    ffmpeg
+    vlc
   ];
 }
