@@ -41,3 +41,5 @@ gmodules/modules/network/mihomo/config.yaml
 **/hardware.nix
 
 *.pem
+
+*.secret.*

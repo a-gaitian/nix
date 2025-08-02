@@ -15,7 +15,7 @@ in {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   home-manager = {
-    useGlobalPkgs = false;
+    useGlobalPkgs = true;
     users = {
       gaitian = { pkgs, ... }: {
         home.stateVersion = "24.05";
@@ -56,7 +56,10 @@ in {
       kubernetes.enable = true;
       podman.enable = true;
     };
-    network.mihomo.enable = true;
+    network = {
+      mihomo.enable = true;
+      rclone.enable = true;
+    };
     app = {
       firefox.enable = true;
       chromium.enable = true;
@@ -94,18 +97,21 @@ in {
 
   nix.buildMachines = [ {
     hostName = "10.0.0.10";
-    protocol = "ssh-ng";
+    sshUser = "nix-remote";
     system = "x86_64-linux";
-    maxJobs = 16;
-    speedFactor = 1;
     supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-    mandatoryFeatures = [ ];
   } ];
   nix.distributedBuilds = true;
-
-  nix.extraOptions = ''
-    builders-use-substitutes = true
-  '';
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+  };
+  nix.settings = {
+    builders-use-substitutes = true;
+    auto-optimise-store = true;
+    substituters = [ "https://cache.gaitian.dev" ];
+    trusted-public-keys = [ "cache.gaitian.dev:PFQbJfLHDRy8itoaaKANqSynuXWStYYTz755N2idMVA=" ];
+  };
 
   security.pki.certificateFiles = [
     ./mitmproxy-ca-cert.pem
