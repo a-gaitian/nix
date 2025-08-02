@@ -65,6 +65,7 @@ in {
     };
     game = {
       minecraft.enable = true;
+      lutris.enable = true;
     };
     keyring.enable = true;
     jdks.enable = true;
@@ -106,10 +107,16 @@ in {
     builders-use-substitutes = true
   '';
 
+  security.pki.certificateFiles = [
+    ./mitmproxy-ca-cert.pem
+  ];
+
   environment.systemPackages = with pkgs; [
     openconnect
     obs-studio
     ffmpeg
     vlc
+    mitmproxy
+    python3
   ];
 }
