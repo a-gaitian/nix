@@ -2,12 +2,12 @@
 
 let
   rootDisk = "/dev/disk/by-id/nvme-X15_SSD_256GB_AA000000000000000032";
-  sources = import ./npins;
 
   sshPubKeys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOUDeTLyvcsAAf2cKNd/LB+wFnwhK1M9w4nnAko6g1SO gaityan@pulse.insure"
   ];
 
+  sources = import ./npins;
   gaitian-nix = ../../.;
 in
 {
@@ -15,10 +15,16 @@ in
   imports = [
     (sources.disko + "/module.nix")
     (import "${gaitian-nix}/gmodules")
+    (import "${gaitian-nix}/gmodules/imports/minecraft.nix")
     (sources.home-manager + "/nixos")
     ./disko/single-disk-layout.nix
     ./disko/raidz1.nix
     ./disko/ssd.nix
+    (import sources.nix-minecraft).outputs.nixosModules.minecraft-servers
+  ];
+
+  nixpkgs.overlays = [
+    (import sources.nix-minecraft).outputs.overlay
   ];
 
   # Hardware
@@ -73,8 +79,13 @@ in
     server = {
       inherit sshPubKeys;
       host = "gaitian.dev";
+      storage = {
+        main = "/storage";
+        fast = "/storage-fast";
+      };
       caddy.enable = true;
       remote-builder.enable = true;
+      minecraft.enable = true;
     };
   };
 

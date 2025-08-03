@@ -29,6 +29,19 @@
       "url": "https://github.com/nix-community/home-manager/archive/fc3add429f21450359369af74c2375cb34a2d204.tar.gz",
       "hash": "026rvynmzmpigax9f8gy9z67lsl6dhzv2p6s8wz4w06v3gjvspm1"
     },
+    "nix-minecraft": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Infinidoge",
+        "repo": "nix-minecraft"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "2c3307f3a895f5a34ffde005943e9167aa32e0c7",
+      "url": "https://github.com/Infinidoge/nix-minecraft/archive/2c3307f3a895f5a34ffde005943e9167aa32e0c7.tar.gz",
+      "hash": "0asqwfm41wyx9fycw7bda4scs7j8lqivavbiz5cgjhndxzmm8xsr"
+    },
     "nixos-anywhere": {
       "type": "GitRelease",
       "repository": {
