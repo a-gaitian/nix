@@ -22,7 +22,7 @@ in {
         plugins = [ "github.com/caddy-dns/cloudflare@v0.2.1" ];
         hash = "sha256-2D7dnG50CwtCho+U+iHmSj2w14zllQXPjmTHr6lJZ/A=";
       };
-      environmentFile = "/etc/nixos/caddy.env";
+      environmentFile = "/var/secrets/caddy.env";
       globalConfig = ''
         email galik-ya@yandex.ru
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}

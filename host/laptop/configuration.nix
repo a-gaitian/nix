@@ -98,19 +98,24 @@ in {
   nix.buildMachines = [ {
     hostName = "10.0.0.10";
     sshUser = "nix-remote";
+    sshKey = "/home/gaitian/.ssh/id_ed25519";
+    protocol = "ssh";
+    speedFactor = 1;
+    maxJobs = 16;
     system = "x86_64-linux";
     supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    mandatoryFeatures = [ ];
   } ];
   nix.distributedBuilds = true;
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
   };
   nix.settings = {
     builders-use-substitutes = true;
     auto-optimise-store = true;
     substituters = [ "https://cache.gaitian.dev" ];
-    trusted-public-keys = [ "cache.gaitian.dev:PFQbJfLHDRy8itoaaKANqSynuXWStYYTz755N2idMVA=" ];
+    trusted-public-keys = [ "cache.gaitian.dev:PYy5ClYQBITMMUVWJ82uMGcBDMZK9l2nOhc0/f9tKvQ=" ];
   };
 
   security.pki.certificateFiles = [

@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 let
-  diskDevice = "/dev/nvme1n1";
+  rootDisk = "/dev/disk/by-id/nvme-X15_SSD_256GB_AA000000000000000032";
   sources = import ./npins;
 
   sshPubKeys = [
@@ -14,22 +14,38 @@ in
   system.stateVersion = "25.05";
   imports = [
     (sources.disko + "/module.nix")
-    ./single-disk-layout.nix
     (import "${gaitian-nix}/gmodules")
     (sources.home-manager + "/nixos")
+    ./disko/single-disk-layout.nix
+    ./disko/raidz1.nix
+    ./disko/ssd.nix
   ];
+
+  # Hardware
+  boot.loader.grub = {
+    devices = [ rootDisk ];
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
 
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
   networking.hostName = "gray";
+  networking.hostId = "0B2DC7D0";
 
-  # Hardware
-  disko.devices.disk.main.device = diskDevice;
-  boot.loader.grub = {
-    devices = [ diskDevice ];
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+  # Kiosk
+  users.users.kiosk = {
+    isNormalUser = true;
   };
+  services.getty = {
+    autologinUser = "kiosk";
+    autologinOnce = true;
+  };
+  environment.loginShellInit = ''
+    if [ "$(tty)" = "/dev/tty1" ] && [ -t 0 ] && [ "$USER" = kiosk ]; then
+      exec btop
+    fi
+  '';
 
   # SSH
   services.openssh.enable = true;
@@ -67,5 +83,6 @@ in
   environment.systemPackages = with pkgs; [
     btop
     fuc
+    ncdu
   ];
 }

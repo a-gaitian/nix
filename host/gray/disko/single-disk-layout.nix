@@ -1,6 +1,11 @@
-{ ... }: {
+{ ... }: let
+
+rootDisk = "/dev/disk/by-id/nvme-X15_SSD_256GB_AA000000000000000032";
+
+in {
   disko.devices.disk.main = {
     type = "disk";
+    device = rootDisk;
     content = {
       type = "gpt";
       partitions = {
