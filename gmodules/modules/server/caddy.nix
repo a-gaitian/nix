@@ -2,6 +2,7 @@
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
   user = config.gmodules.home.user;
+  mainStorage = config.gmodules.server.storage.main;
   cfg = config.gmodules.server.caddy;
 in {
   options.gmodules.server.caddy = {
@@ -26,6 +27,21 @@ in {
       globalConfig = ''
         email galik-ya@yandex.ru
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+      '';
+      virtualHosts."log.voxcel.ru" = {
+        logFormat = ''
+          output file "${mainStorage}/nextcloud/log/access"
+        '';
+        extraConfig = ''
+          respond "Logged" 200
+        '';
+      };
+      virtualHosts."view-log.voxcel.ru".extraConfig = ''
+        basicauth /* {
+          admin ${builtins.readFile ./log-password-hash.secret}
+        }
+        root * ${mainStorage}/nextcloud/log
+        file_server
       '';
     };
   };

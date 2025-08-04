@@ -42,4 +42,4 @@ gmodules/modules/network/mihomo/config.yaml
 
 *.pem
 
-*.secret.*
+*.secret*
