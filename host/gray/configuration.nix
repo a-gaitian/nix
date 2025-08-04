@@ -86,6 +86,8 @@ in
       caddy.enable = true;
       remote-builder.enable = true;
       minecraft.enable = true;
+      postgresql.enable = true;
+      nextcloud.enable = true;
     };
   };
 
