@@ -38,6 +38,16 @@ in {
       respond 403
     '';
 
+    services.loki = {
+      enable = true;
+      dataDir = "${storage}/loki";
+      configFile = ./loki.yaml;
+    };
+    services.alloy = {
+      enable = true;
+    };
+    environment.etc."alloy/config.alloy".source = ./config.alloy;
+
     services.grafana = {
       enable = true;
       dataDir = "${fastStorage}/grafana";

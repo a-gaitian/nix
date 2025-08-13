@@ -122,7 +122,7 @@ in {
     auto-optimise-store = true;
     substituters = [
       "https://cache.gaitian.dev"
-      "nix-community.cachix.org"
+      "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
       "cache.gaitian.dev:PYy5ClYQBITMMUVWJ82uMGcBDMZK9l2nOhc0/f9tKvQ="
