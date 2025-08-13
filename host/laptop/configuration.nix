@@ -120,8 +120,14 @@ in {
   nix.settings = {
     builders-use-substitutes = true;
     auto-optimise-store = true;
-    substituters = [ "https://cache.gaitian.dev" ];
-    trusted-public-keys = [ "cache.gaitian.dev:PYy5ClYQBITMMUVWJ82uMGcBDMZK9l2nOhc0/f9tKvQ=" ];
+    substituters = [
+      "https://cache.gaitian.dev"
+      "nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.gaitian.dev:PYy5ClYQBITMMUVWJ82uMGcBDMZK9l2nOhc0/f9tKvQ="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
   security.pki.certificateFiles = [

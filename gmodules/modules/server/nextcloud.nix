@@ -24,6 +24,7 @@ in {
         adminuser = "admin";
         adminpassFile = "${mainStorage}/nextcloud/admin-pass";
         dbtype = "pgsql";
+        dbhost = "/var/run/postgresql";
       };
       settings = {
         trusted_proxies = [

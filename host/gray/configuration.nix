@@ -95,6 +95,7 @@ in
       minecraft.enable = true;
       postgresql.enable = true;
       nextcloud.enable = true;
+      authentik.enable = true;
     };
   };
 

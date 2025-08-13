@@ -17,7 +17,6 @@ in {
       enableTCPIP = true;
       authentication = pkgs.lib.mkOverride 10 ''
         local all all peer
-        host nextcloud nextcloud localhost trust
         host all postgres localhost md5
       '';
       ensureDatabases = [
