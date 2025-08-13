@@ -57,6 +57,12 @@ in
   services.openssh.enable = true;
   users.users.root.openssh.authorizedKeys.keys = sshPubKeys;
 
+  # NFS
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /storage/share  10.0.0.1/24(rw,no_subtree_check)
+  '';
+
   # Home Manager
   home-manager = {
     useGlobalPkgs = true;
@@ -76,6 +82,7 @@ in
     shell.fish.enable = true;
     utilities.enableAll = true;
     network.rclone.enable = true;
+    development.podman.enable = true;
     server = {
       inherit sshPubKeys;
       host = "gaitian.dev";
@@ -91,7 +98,14 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      80 443 2049
+    ];
+    allowedUDPPorts = [
+
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     btop

@@ -35,6 +35,12 @@ in {
     };
   };
 
+  fileSystems."/share" = {
+    device = "10.0.0.10:/storage/share";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+
   gmodules = {
     home.user = "gaitian";
     shell.fish.enable = true;
@@ -122,6 +128,10 @@ in {
     ./mitmproxy-ca-cert.pem
   ];
 
+  programs.steam = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     openconnect
     obs-studio
@@ -129,5 +139,6 @@ in {
     vlc
     mitmproxy
     python3
+    transmission_4-qt
   ];
 }
