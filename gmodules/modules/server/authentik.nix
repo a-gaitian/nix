@@ -2,7 +2,7 @@
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
   host = config.gmodules.server.host;
-  mainStorage = config.gmodules.server.storage.main;
+  storage = config.gmodules.server.storage.main;
   cfg = config.gmodules.server.authentik;
 
   authentik-nix = import (builtins.fetchTarball {
@@ -30,11 +30,13 @@ in {
           from = "authentik@${host}";
         };
         disable_startup_analytics = true;
-        avatars = "initials";
       };
     };
     services.caddy.virtualHosts."authentik.${host}".extraConfig = ''
-      reverse_proxy localhost:9000
+      header Access-Control-Allow-Origin *
+      reverse_proxy http://localhost:9000 {
+          header_down -Access-Control-Allow-Origin
+      }
     '';
   };
 }

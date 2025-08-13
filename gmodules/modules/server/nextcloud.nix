@@ -2,8 +2,7 @@
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
   host = config.gmodules.server.host;
-  mainStorage = config.gmodules.server.storage.main;
-  fastStorage = config.gmodules.server.storage.fast;
+  storage = config.gmodules.server.storage.main;
   cfg = config.gmodules.server.nextcloud;
 
   hostName = "nextcloud.voxcel.ru";
@@ -18,11 +17,11 @@ in {
       enable = true;
       inherit hostName;
       https = true;
-      home = "${mainStorage}/nextcloud/home";
-      datadir = "${mainStorage}/nextcloud/data";
+      home = "${storage}/nextcloud/home";
+      datadir = "${storage}/nextcloud/data";
       config = {
         adminuser = "admin";
-        adminpassFile = "${mainStorage}/nextcloud/admin-pass";
+        adminpassFile = "${storage}/nextcloud/admin-pass";
         dbtype = "pgsql";
         dbhost = "/var/run/postgresql";
       };

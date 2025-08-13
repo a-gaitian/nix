@@ -2,7 +2,7 @@
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
   user = config.gmodules.home.user;
-  mainStorage = config.gmodules.server.storage.main;
+  storage = config.gmodules.server.storage.main;
   cfg = config.gmodules.server.caddy;
 in {
   options.gmodules.server.caddy = {
@@ -30,7 +30,7 @@ in {
       '';
       virtualHosts."log.voxcel.ru" = {
         logFormat = ''
-          output file "${mainStorage}/nextcloud/log/access"
+          output file "${storage}/nextcloud/log/access"
         '';
         extraConfig = ''
           respond "Logged" 200
@@ -40,7 +40,7 @@ in {
         basicauth /* {
           admin ${builtins.readFile ./log-password-hash.secret}
         }
-        root * ${mainStorage}/nextcloud/log
+        root * ${storage}/nextcloud/log
         file_server
       '';
     };

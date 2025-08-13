@@ -96,6 +96,7 @@ in
       postgresql.enable = true;
       nextcloud.enable = true;
       authentik.enable = true;
+      monitoring.enable = true;
     };
   };
 
