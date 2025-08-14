@@ -23,11 +23,11 @@
         "owner": "nix-community",
         "repo": "home-manager"
       },
-      "branch": "release-25.05",
+      "branch": "master",
       "submodules": false,
-      "revision": "fc3add429f21450359369af74c2375cb34a2d204",
-      "url": "https://github.com/nix-community/home-manager/archive/fc3add429f21450359369af74c2375cb34a2d204.tar.gz",
-      "hash": "026rvynmzmpigax9f8gy9z67lsl6dhzv2p6s8wz4w06v3gjvspm1"
+      "revision": "279ca5addcdcfa31ac852b3ecb39fc372684f426",
+      "url": "https://github.com/nix-community/home-manager/archive/279ca5addcdcfa31ac852b3ecb39fc372684f426.tar.gz",
+      "hash": "19df5mqq1kvlm1jd7ahz3wrcnnhmy1py2pdswr4z974692x29mjj"
     },
     "nix-minecraft": {
       "type": "Git",
@@ -38,9 +38,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "2c3307f3a895f5a34ffde005943e9167aa32e0c7",
-      "url": "https://github.com/Infinidoge/nix-minecraft/archive/2c3307f3a895f5a34ffde005943e9167aa32e0c7.tar.gz",
-      "hash": "0asqwfm41wyx9fycw7bda4scs7j8lqivavbiz5cgjhndxzmm8xsr"
+      "revision": "d89606471e2ea2ccf4e3c8a19dea4071bfe7885c",
+      "url": "https://github.com/Infinidoge/nix-minecraft/archive/d89606471e2ea2ccf4e3c8a19dea4071bfe7885c.tar.gz",
+      "hash": "1l0wnjpr31ii1p9k8yc1issmpxywk4alnzqkkki04cp9zl76c2va"
     },
     "nixos-anywhere": {
       "type": "GitRelease",
@@ -59,10 +59,17 @@
       "hash": "01k91p2i7vqdvwkdh76fw9baj906mny3p85ix980rjzhr6yc4m45"
     },
     "nixpkgs": {
-      "type": "Channel",
-      "name": "nixos-25.05",
-      "url": "https://releases.nixos.org/nixos/25.05/nixos-25.05.807313.59e69648d345/nixexprs.tar.xz",
-      "hash": "0wm4rnlfg1swkbhsr5101hgwkw8ghsm5bi4igizpgcx03zkrrpg0"
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "nixpkgs"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "84ac628079fb0174624475f29d75207a1357cd20",
+      "url": "https://github.com/NixOS/nixpkgs/archive/84ac628079fb0174624475f29d75207a1357cd20.tar.gz",
+      "hash": "1nf0p4vnzrll84dmsckfwn0k6z4lc97sjniwm69arfbcqy11xng0"
     }
   },
   "version": 5
