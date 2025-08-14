@@ -10,6 +10,6 @@ pkgs.mkShell {
     nixos-rebuild
   ];
   shellHook = ''
-    export NIX_PATH="nixpkgs=${sources.nixpkgs}:nixos-config=$PWD/configuration.nix"
+    export NIX_PATH="nixpkgs=${pkgs.path}:nixos-config=$PWD/configuration.nix"
   '';
 }

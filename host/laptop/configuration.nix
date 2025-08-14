@@ -146,5 +146,6 @@ in {
     mitmproxy
     python3
     transmission_4-qt
+    bitwarden-desktop
   ];
 }

@@ -97,6 +97,7 @@ in
       nextcloud.enable = true;
       authentik.enable = true;
       monitoring.enable = true;
+      vaultwarden.enable = true;
     };
   };
 
