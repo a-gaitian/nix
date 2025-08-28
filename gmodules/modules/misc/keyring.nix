@@ -6,6 +6,7 @@ let
 in {
   options.gmodules.keyring = {
     enable = mkEnableOption "keyring";
+    enableSsh = mkEnableOption "keyring SSH";
   };
 
   config = mkIf cfg.enable {
@@ -14,7 +15,7 @@ in {
       then [ pkgs.pinentry ]
       else [ pkgs.pinentry-qt ];
 
-    programs.ssh.startAgent = true;
+    programs.ssh.startAgent = cfg.enableSsh;
 
     programs.gnupg.agent.enable = true;
 

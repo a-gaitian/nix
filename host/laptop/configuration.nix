@@ -78,6 +78,7 @@ in {
     };
     keyring.enable = true;
     jdks.enable = true;
+    bitwarden.enable = true;
   };
 
   time.timeZone = "Europe/Moscow";
@@ -138,6 +139,14 @@ in {
     enable = true;
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20"
+  ];
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-runtime_7}/share/dotnet";
+  };
+
   environment.systemPackages = with pkgs; [
     openconnect
     obs-studio
@@ -146,6 +155,6 @@ in {
     mitmproxy
     python3
     transmission_4-qt
-    bitwarden-desktop
+    dotnet-runtime_7
   ];
 }
