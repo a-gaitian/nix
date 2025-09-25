@@ -33,6 +33,9 @@ in
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
+  boot.kernelParams = [
+    "intel_iommu=off"
+  ];
 
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -81,7 +84,9 @@ in
     home.user = "root";
     shell.fish.enable = true;
     utilities.enableAll = true;
-    network.rclone.enable = true;
+    network = {
+      rclone.enable = true;
+    };
     development.podman.enable = true;
     server = {
       inherit sshPubKeys;
@@ -98,6 +103,7 @@ in
       authentik.enable = true;
       monitoring.enable = true;
       vaultwarden.enable = true;
+      transmission.enable = true;
     };
   };
 
@@ -106,7 +112,6 @@ in
       80 443 2049
     ];
     allowedUDPPorts = [
-
     ];
   };
 
