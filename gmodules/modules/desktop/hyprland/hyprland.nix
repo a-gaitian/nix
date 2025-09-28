@@ -53,6 +53,7 @@ in {
 
     programs.hyprland = {
       enable = true;
+      xwayland.enable = true;
     };
 
     home-manager.users."${user}" = {
@@ -76,22 +77,6 @@ in {
 
       programs.wlogout = {
         enable = true;
-      };
-
-      programs.cava = {
-        enable = true;
-        settings = {
-          general = {
-            sleep_timer = 3;
-          };
-          input = {
-            method = "pipewire";
-          };
-          output = {
-            orientation = "horizontal";
-            show_idle_bar_heads = 0;
-          };
-        };
       };
 
       wayland.windowManager.hyprland.enable = true;
@@ -178,7 +163,6 @@ in {
 
         exec-once = [
           "swaync"
-          "kitty -o background_opacity=0 --class=\"kitty-bg\" --start-as fullscreen -e cava"
           "xrandr --output ${builtins.elemAt (builtins.split "," (if builtins.length cfg.monitor > 0 then builtins.elemAt cfg.monitor 0 else "")) 0} --primary"
         ];
 

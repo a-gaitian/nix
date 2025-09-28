@@ -63,7 +63,10 @@ in {
       podman.enable = true;
     };
     network = {
-      mihomo.enable = true;
+      mihomo = {
+        enable = true;
+        configFile = ./mihomo.yaml;
+      };
       rclone.enable = true;
     };
     app = {
@@ -86,13 +89,13 @@ in {
 
   networking.hostName = "work-laptop";
   networking.networkmanager.enable = true;
-  networking.resolvconf = {
-    enable = true;
-    extraOptions= [
-      "rotate"
-      "timeout:3"
-    ];
-  };
+#  networking.resolvconf = {
+#    enable = true;
+#    extraOptions= [
+#      "rotate"
+#      "timeout:3"
+#    ];
+#  };
 
   services.fprintd = {
     enable = true;
@@ -105,7 +108,7 @@ in {
   nix.buildMachines = [ {
     hostName = "10.0.0.10";
     sshUser = "nix-remote";
-    sshKey = "/home/gaitian/.ssh/id_ed25519";
+#    sshKey = "/home/gaitian/.ssh/id_ed25519";
     protocol = "ssh";
     speedFactor = 1;
     maxJobs = 16;
@@ -156,5 +159,12 @@ in {
     python3
     transmission_4-qt
     dotnet-runtime_7
+    vesktop
+    godot
+    aseprite
+    gimp
+    blueman
+    vulkan-tools
   ];
+  programs.amnezia-vpn.enable = true;
 }

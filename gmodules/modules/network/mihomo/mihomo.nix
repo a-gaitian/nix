@@ -6,13 +6,16 @@ in {
 
   options.gmodules.network.mihomo = {
     enable = mkEnableOption "mihomo";
+    configFile = mkOption {
+      type = types.path;
+    };
   };
 
   config = mkIf cfg.enable {
     services.mihomo = {
       enable = true;
       tunMode = true;
-      configFile = ./config.yaml;
+      configFile = cfg.configFile;
     };
   };
 }

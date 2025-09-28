@@ -103,7 +103,8 @@ in
       authentik.enable = true;
       monitoring.enable = true;
       vaultwarden.enable = true;
-      transmission.enable = true;
+      media-stack.enable = true;
+      homarr.enable = true;
     };
   };
 

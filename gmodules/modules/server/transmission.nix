@@ -14,19 +14,18 @@ in {
     services.transmission = {
       enable = true;
       package = pkgs.transmission_4;
+      openFirewall = true;
       settings = {
         download-dir = "${storage}/share/Downloads";
         incomplete-dir = "${storage}/share/Downloads/.incomplete";
+        rpc-bind-address = "0.0.0.0";
         rpc-whitelist-enabled = false;
         rpc-host-whitelist-enabled = false;
       };
     };
     networking.firewall = {
       allowedTCPPorts = [
-        51413
-      ];
-      allowedUDPPorts = [
-        51413
+        9091
       ];
     };
     services.caddy.virtualHosts."torrent.${host}".extraConfig = ''
