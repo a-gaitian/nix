@@ -15,11 +15,14 @@ in {
       members = [
         "transmission"
         "jellyfin"
+        "sonarr"
       ];
     };
     gmodules.server = {
       transmission.enable = true;
       jellyfin.enable = true;
+      sonarr.enable = true;
+      prowlarr.enable = true;
     };
   };
 }

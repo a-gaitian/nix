@@ -25,6 +25,26 @@ in
 
   nixpkgs.overlays = [
     (import sources.nix-minecraft).outputs.overlay
+    (self: super: {
+      n8n = super.n8n.overrideAttrs(oldAttrs: rec {
+        version = "1.112.6";
+        pnpmDeps = super.pnpm_10.fetchDeps {
+          inherit (oldAttrs) pname;
+          inherit version src;
+          fetcherVersion = 1;
+          hash = "sha256-j+HJhvzrcu8JsezcFJxfgteOgTspWQb2ZSN2fEl7Voo=";
+        };
+        src = pkgs.fetchFromGitHub {
+          owner = "n8n-io";
+          repo = "n8n";
+          tag = "n8n@${version}";
+          hash = "sha256-r/MCU/S1kkKQPkhmp9ZHTtgZxMu5TFCl5Yejp73gATw=";
+        };
+        patches = [
+          ./patches/n8n.patch
+        ];
+      });
+    })
   ];
 
   # Hardware
@@ -86,6 +106,10 @@ in
     utilities.enableAll = true;
     network = {
       rclone.enable = true;
+      mihomo = {
+        enable = true;
+        configFile = ./mihomo.yaml;
+      };
     };
     development.podman.enable = true;
     server = {
@@ -103,14 +127,17 @@ in
       authentik.enable = true;
       monitoring.enable = true;
       vaultwarden.enable = true;
-      media-stack.enable = true;
       homarr.enable = true;
+      jellyfin.enable = true;
+      transmission.enable = true;
+      n8n.enable = true;
     };
   };
 
   networking.firewall = {
     allowedTCPPorts = [
       80 443 2049
+      9898 7890 # mihomo
     ];
     allowedUDPPorts = [
     ];

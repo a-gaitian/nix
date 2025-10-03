@@ -89,13 +89,13 @@ in {
 
   networking.hostName = "work-laptop";
   networking.networkmanager.enable = true;
-#  networking.resolvconf = {
-#    enable = true;
-#    extraOptions= [
-#      "rotate"
-#      "timeout:3"
-#    ];
-#  };
+  networking.resolvconf = {
+    enable = true;
+    extraOptions= [
+      "rotate"
+      "timeout:3"
+    ];
+  };
 
   services.fprintd = {
     enable = true;
@@ -165,6 +165,8 @@ in {
     gimp
     blueman
     vulkan-tools
+    pnpm
+    nodejs
   ];
-  programs.amnezia-vpn.enable = true;
+#  programs.amnezia-vpn.enable = true;
 }

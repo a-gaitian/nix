@@ -1,0 +1,41 @@
+Index: packages/cli/src/license.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/packages/cli/src/license.ts b/packages/cli/src/license.ts
+--- a/packages/cli/src/license.ts	(revision 0c00d3b18c17ce36c62b54fecfa79215f649ebf8)
++++ b/packages/cli/src/license.ts	(date 1759234896333)
+@@ -62,7 +62,7 @@
+ 		const { instanceType } = this.instanceSettings;
+ 		const isMainInstance = instanceType === 'main';
+ 		const server = this.globalConfig.license.serverUrl;
+-		const offlineMode = !isMainInstance;
++		const offlineMode = true;
+ 		const autoRenewOffset = 72 * Time.hours.toSeconds;
+ 		const saveCertStr = isMainInstance
+ 			? async (value: TLicenseBlock) => await this.saveCertStr(value)
+@@ -218,7 +218,11 @@
+ 	}
+
+ 	isLicensed(feature: BooleanLicenseFeature) {
+-		return this.manager?.hasFeatureEnabled(feature) ?? false;
++		if (feature == LICENSE_FEATURES.SHOW_NON_PROD_BANNER) {
++			return false;
++		} else {
++			return true;
++		}
+ 	}
+
+ 	/** @deprecated Use `LicenseState.isSharingLicensed` instead. */
+@@ -345,8 +349,8 @@
+ 		return this.manager?.getCurrentEntitlements() ?? [];
+ 	}
+
+-	getValue<T extends keyof FeatureReturnType>(feature: T): FeatureReturnType[T] {
+-		return this.manager?.getFeatureValue(feature) as FeatureReturnType[T];
++	getValue<T extends keyof FeatureReturnType>(_feature: T): FeatureReturnType[T] {
++		return UNLIMITED_LICENSE_QUOTA as FeatureReturnType[T];
+ 	}
+
+ 	getManagementJwt(): string {

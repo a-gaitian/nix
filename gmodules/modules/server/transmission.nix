@@ -29,17 +29,8 @@ in {
       ];
     };
     services.caddy.virtualHosts."torrent.${host}".extraConfig = ''
-      route {
-        reverse_proxy /outpost.goauthentik.io/* https://authentik.${host} {
-            header_up Host {http.reverse_proxy.upstream.host}
-        }
-        forward_auth https://authentik.${host} {
-          uri /outpost.goauthentik.io/auth/caddy
-          copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
-        }
-
-        reverse_proxy localhost:9091
-      }
+      import authentik
+      reverse_proxy localhost:9091
     '';
   };
 }
