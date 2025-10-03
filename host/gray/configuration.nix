@@ -26,7 +26,7 @@ in
   nixpkgs.overlays = [
     (import sources.nix-minecraft).outputs.overlay
     (self: super: {
-      n8n = super.n8n.overrideAttrs(oldAttrs: rec {
+      n8n = super.n8n.overrideAttrs (oldAttrs: rec {
         version = "1.112.6";
         pnpmDeps = super.pnpm_10.fetchDeps {
           inherit (oldAttrs) pname;
@@ -43,6 +43,9 @@ in
         patches = [
           ./patches/n8n.patch
         ];
+      });
+      matrix-synapse-unwrapped = super.matrix-synapse-unwrapped.overridePythonAttrs (old: rec {
+        dependencies = old.optional-dependencies.oidc;
       });
     })
   ];
@@ -131,6 +134,7 @@ in
       jellyfin.enable = true;
       transmission.enable = true;
       n8n.enable = true;
+      matrix.enable = true;
     };
   };
 
