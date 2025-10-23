@@ -65,6 +65,18 @@ in
   networking.hostName = "gray";
   networking.hostId = "0B2DC7D0";
 
+  nixpkgs.config.nvidia.acceptLicense = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
+  };
+
   # Kiosk
   users.users.kiosk = {
     isNormalUser = true;
@@ -135,6 +147,7 @@ in
       transmission.enable = true;
       n8n.enable = true;
       matrix.enable = true;
+      frps.enable = true;
     };
   };
 
