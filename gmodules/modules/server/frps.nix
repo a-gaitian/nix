@@ -16,18 +16,23 @@ in {
       enable = true;
       settings = {
         bindPort = 7000;
+        transport.tls.force = true;
       };
     };
     networking.firewall = {
       allowedTCPPorts = [
         7000
+        70
+        8443
       ];
     };
     services.caddy.virtualHosts."vpn.${host}".extraConfig = ''
-      reverse_proxy localhost:7080
-    '';
-    services.caddy.virtualHosts."trojan.${host}".extraConfig = ''
-      reverse_proxy localhost:8443
+      reverse_proxy localhost:7080 {
+        transport http {
+          tls
+          tls_insecure_skip_verify
+        }
+      }
     '';
   };
 }

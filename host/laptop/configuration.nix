@@ -167,6 +167,8 @@ in {
     vulkan-tools
     pnpm
     nodejs
+    parsec-bin
+    remmina
   ];
 #  programs.amnezia-vpn.enable = true;
 }
