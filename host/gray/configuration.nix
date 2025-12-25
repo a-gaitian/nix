@@ -149,6 +149,7 @@ in
       matrix.enable = true;
       frps.enable = true;
       virtualisation.enable = true;
+      couchdb.enable = true;
     };
   };
 

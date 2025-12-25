@@ -10,7 +10,6 @@ in {
     enable = mkEnableOption "couchdb";
   };
 
-
   config = mkIf cfg.enable {
     services.couchdb = {
       enable = true;
