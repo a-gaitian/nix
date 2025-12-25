@@ -148,6 +148,7 @@ in
       n8n.enable = true;
       matrix.enable = true;
       frps.enable = true;
+      virtualisation.enable = true;
     };
   };
 
@@ -155,8 +156,12 @@ in
     allowedTCPPorts = [
       80 443 2049
       9898 7890 # mihomo
+      25566
+      5201
     ];
     allowedUDPPorts = [
+      25566
+      5201
     ];
   };
 
@@ -164,5 +169,7 @@ in
     btop
     fuc
     ncdu
+    javaPackages.compiler.temurin-bin.jre-21
+    screen
   ];
 }

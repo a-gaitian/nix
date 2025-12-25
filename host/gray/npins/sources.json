@@ -38,9 +38,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d89606471e2ea2ccf4e3c8a19dea4071bfe7885c",
-      "url": "https://github.com/Infinidoge/nix-minecraft/archive/d89606471e2ea2ccf4e3c8a19dea4071bfe7885c.tar.gz",
-      "hash": "1l0wnjpr31ii1p9k8yc1issmpxywk4alnzqkkki04cp9zl76c2va"
+      "revision": "316858c27d278b20e776cd4dd8f787812f587ba2",
+      "url": "https://github.com/Infinidoge/nix-minecraft/archive/316858c27d278b20e776cd4dd8f787812f587ba2.tar.gz",
+      "hash": "11hgrq0jrmhfw9mqlpwvmsm6s6k8864bbmcwr0yhya5a536kvj79"
     },
     "nixos-anywhere": {
       "type": "GitRelease",

@@ -15,7 +15,7 @@ in {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   home-manager = {
-    useGlobalPkgs = true;
+#    useGlobalPkgs = true;
     users = {
       gaitian = { pkgs, ... }: {
         home.stateVersion = "24.05";
@@ -49,6 +49,7 @@ in {
       enable = true;
       monitor = [
         "DP-1, 3440x1440@120, 0x0, 1"
+        "DP-6, 3440x1440@120, 0x0, 1"
         "DP-2, preferred, 3120x-1080, 1.5"
         "desc:LG Display 0x06CF, 1920x1080@60, 3440x360, 1"
       ];
@@ -169,6 +170,16 @@ in {
     nodejs
     parsec-bin
     remmina
+    jellyfin-media-player
+    ftb-app
   ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      25566
+    ];
+    allowedUDPPorts = [
+      25566
+    ];
+  };
 #  programs.amnezia-vpn.enable = true;
 }

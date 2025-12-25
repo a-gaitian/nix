@@ -21,7 +21,7 @@ in {
       dataDir = "${fastStorage}/minecraft";
       servers.lighthouse = {
         enable = true;
-        package = pkgs.paperServers.paper-1_21_8;
+        package = pkgs.paperServers.paper-1_21_10;
       };
     };
     services.caddy.virtualHosts."map.${host}".extraConfig = ''
