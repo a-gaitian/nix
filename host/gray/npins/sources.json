@@ -37,10 +37,7 @@
         "repo": "nix-minecraft"
       },
       "branch": "master",
-      "submodules": false,
-      "revision": "01f571579edd64433f97c4294137fbc366deef4b",
-      "url": "https://github.com/Infinidoge/nix-minecraft/archive/316858c27d278b20e776cd4dd8f787812f587ba2.tar.gz",
-      "hash": "11hgrq0jrmhfw9mqlpwvmsm6s6k8864bbmcwr0yhya5a536kvj79"
+      "submodules": false
     },
     "nixos-anywhere": {
       "type": "GitRelease",
