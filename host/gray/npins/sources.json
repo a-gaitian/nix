@@ -40,7 +40,7 @@
       "submodules": false,
       "revision": "01f571579edd64433f97c4294137fbc366deef4b",
       "url": "https://github.com/Infinidoge/nix-minecraft/archive/01f571579edd64433f97c4294137fbc366deef4b.tar.gz",
-      "hash": ""
+      "hash": "0g0qkbd1pidcvbm0rd6kpdhf9a829bwgicd9dj1amda06y35xpnz"
     },
     "nixos-anywhere": {
       "type": "GitRelease",
