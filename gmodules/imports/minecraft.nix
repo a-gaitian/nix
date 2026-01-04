@@ -19,13 +19,18 @@ in {
       eula = true;
       openFirewall = true;
       dataDir = "${fastStorage}/minecraft";
-      servers.lighthouse = {
+      servers.dudes = {
         enable = true;
-        package = pkgs.paperServers.paper-1_21_10;
+        package = pkgs.paperServers.paper-1_21_11;
       };
     };
     services.caddy.virtualHosts."map.${host}".extraConfig = ''
       reverse_proxy http://localhost:25585
     '';
+    networking.firewall = {
+      allowedUDPPorts = [
+        24454 # Simple Voice Chat
+      ];
+    };
   };
 }
