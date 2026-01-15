@@ -122,7 +122,7 @@ in
     network = {
       rclone.enable = true;
       mihomo = {
-        enable = true;
+        enable = false;
         configFile = ./mihomo.yaml;
       };
     };
