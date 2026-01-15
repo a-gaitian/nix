@@ -15,7 +15,6 @@ in {
     services.n8n = {
       enable = true;
       openFirewall = true;
-      webhookUrl = "https://n8n.${host}";
     };
     systemd.services.n8n.environment = {
       N8N_MFA_ENABLED = "false";
