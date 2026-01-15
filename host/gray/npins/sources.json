@@ -25,9 +25,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "279ca5addcdcfa31ac852b3ecb39fc372684f426",
-      "url": "https://github.com/nix-community/home-manager/archive/279ca5addcdcfa31ac852b3ecb39fc372684f426.tar.gz",
-      "hash": "19df5mqq1kvlm1jd7ahz3wrcnnhmy1py2pdswr4z974692x29mjj"
+      "revision": "b4d88c9ac42ae1a745283f6547701da43b6e9f9b",
+      "url": "https://github.com/nix-community/home-manager/archive/b4d88c9ac42ae1a745283f6547701da43b6e9f9b.tar.gz",
+      "hash": ""
     },
     "nix-minecraft": {
       "type": "Git",
