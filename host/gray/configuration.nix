@@ -170,7 +170,7 @@ in
     btop
     fuc
     ncdu
-    javaPackages.compiler.temurin-bin.jre-21
+    javaPackages.compiler.temurin-bin.jre-25
     screen
   ];
 

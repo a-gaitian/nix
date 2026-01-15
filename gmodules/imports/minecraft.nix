@@ -9,7 +9,7 @@ in {
     enable = mkEnableOption "minecraft";
   };
 
-  # tmux -S /run/minecraft/lighthouse.sock attach
+  # tmux -S /run/minecraft/dudes.sock attach
   # Ctrl + b then d to detach
 
   config = mkIf cfg.enable {
