@@ -25,26 +25,26 @@ in {
       reverse_proxy localhost:8096
     '';
 
-    services.jellyseerr = {
-      enable = true;
-      package = (pkgs.jellyseerr.overrideAttrs (oldAttrs: rec {
-        version = "preview-OIDC";
-        src = pkgs.fetchFromGitHub {
-          owner = "Fallenbagel";
-          repo = "jellyseerr";
-          tag = "preview-OIDC";
-          hash = "sha256-EJz1W7ewEczizNRs/X3esjQUwJiTHruo7nkAzyKZbjc=";
-        };
-        pnpmDeps = ((pkgs.pnpm_9.override { nodejs = pkgs.nodejs_22; }).fetchDeps {
-          inherit (oldAttrs) pname;
-          inherit version src;
-          fetcherVersion = 1;
-          hash = "sha256-yjrlZfObAMj9WOywlsP51wNrbUNh8m1RxtbkjasnEW4=";
-        });
-      }));
-    };
-    services.caddy.virtualHosts."jellyseerr.${host}".extraConfig = ''
-      reverse_proxy localhost:5055
-    '';
+#    services.jellyseerr = {
+#      enable = true;
+#      package = (pkgs.jellyseerr.overrideAttrs (oldAttrs: rec {
+#        version = "preview-OIDC";
+#        src = pkgs.fetchFromGitHub {
+#          owner = "Fallenbagel";
+#          repo = "jellyseerr";
+#          tag = "preview-OIDC";
+#          hash = "sha256-EJz1W7ewEczizNRs/X3esjQUwJiTHruo7nkAzyKZbjc=";
+#        };
+#        pnpmDeps = ((pkgs.pnpm_9.override { nodejs = pkgs.nodejs_22; }).fetchDeps {
+#          inherit (oldAttrs) pname;
+#          inherit version src;
+#          fetcherVersion = 1;
+#          hash = "sha256-yjrlZfObAMj9WOywlsP51wNrbUNh8m1RxtbkjasnEW4=";
+#        });
+#      }));
+#    };
+#    services.caddy.virtualHosts."jellyseerr.${host}".extraConfig = ''
+#      reverse_proxy localhost:5055
+#    '';
   };
 }
