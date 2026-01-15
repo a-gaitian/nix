@@ -27,7 +27,7 @@
       "submodules": false,
       "revision": "b4d88c9ac42ae1a745283f6547701da43b6e9f9b",
       "url": "https://github.com/nix-community/home-manager/archive/b4d88c9ac42ae1a745283f6547701da43b6e9f9b.tar.gz",
-      "hash": ""
+      "hash": "1j2dl9yy1j2cfvpdl9gkr9g6plkqapisz2xn0am0xjp8bsgwb5kh"
     },
     "nix-minecraft": {
       "type": "Git",
