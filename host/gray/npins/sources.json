@@ -68,7 +68,7 @@
       "branch": "master",
       "submodules": false,
       "revision": "5969fd0d3cc7f2967d49dd4c57d02ad3b4fd5a5b",
-      "url": "https://github.com/NixOS/nixpkgs/archive/5969fd0d3cc7f2967d49dd4c57d02ad3b4fd5a5b.tar.gz",
+      "url": "",
       "hash": ""
     }
   },
