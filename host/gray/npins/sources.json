@@ -66,10 +66,7 @@
         "repo": "nixpkgs"
       },
       "branch": "master",
-      "submodules": false,
-      "revision": "5969fd0d3cc7f2967d49dd4c57d02ad3b4fd5a5b",
-      "url": "",
-      "hash": ""
+      "submodules": false
     }
   },
   "version": 5
