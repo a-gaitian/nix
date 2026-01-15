@@ -146,7 +146,7 @@ in
       jellyfin.enable = true;
       transmission.enable = true;
       n8n.enable = true;
-      matrix.enable = true;
+      matrix.enable = false;
       frps.enable = true;
       virtualisation.enable = true;
       couchdb.enable = true;
