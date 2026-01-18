@@ -161,6 +161,7 @@ in
       5201
     ];
     allowedUDPPorts = [
+      2049
       5520 # Hytale
       25566
       5201
