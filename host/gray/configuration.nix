@@ -155,13 +155,13 @@ in
 
   networking.firewall = {
     allowedTCPPorts = [
-      80 443 2049
+      80 443 2049 111
       9898 7890 # mihomo
       25566
       5201
     ];
     allowedUDPPorts = [
-      2049
+      2049 111
       5520 # Hytale
       25566
       5201
