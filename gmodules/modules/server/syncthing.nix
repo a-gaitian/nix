@@ -15,7 +15,7 @@ in {
       enable = true;
       openDefaultPorts = true;
       dataDir = "${fastStorage}/syncthing";
-      guiAddress = "10.0.0.10:8384";
+      guiAddress = "0.0.0.0:8384";
     };
     services.caddy.virtualHosts."obsidian.${host}".extraConfig = ''
       reverse_proxy localhost:5984
