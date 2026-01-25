@@ -15,8 +15,8 @@ in {
       enable = true;
       openDefaultPorts = true;
       dataDir = "${fastStorage}/syncthing";
-      settings.gui = {
-        address = "0.0.0.0:8384";
+      settings.options = {
+        listenAddress = "0.0.0.0:8384";
       };
     };
     services.caddy.virtualHosts."obsidian.${host}".extraConfig = ''
