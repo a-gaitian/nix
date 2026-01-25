@@ -13,24 +13,14 @@ in {
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
+      openDefaultPorts = true;
       dataDir = "${fastStorage}/syncthing";
-      settings = {
-        gui = {
-          address = "10.0.0.10:8384";
-        };
+      settings.gui = {
+        address = "0.0.0.0:8384";
       };
     };
     services.caddy.virtualHosts."obsidian.${host}".extraConfig = ''
       reverse_proxy localhost:5984
     '';
-    networking.firewall = {
-      allowedTCPPorts = [
-        8384
-        22000
-      ];
-      allowedUDPPorts = [
-        22000
-      ];
-    };
   };
 }
