@@ -23,5 +23,14 @@ in {
     services.caddy.virtualHosts."obsidian.${host}".extraConfig = ''
       reverse_proxy localhost:5984
     '';
+    networking.firewall = {
+      allowedTCPPorts = [
+        8384
+        22000
+      ];
+      allowedUDPPorts = [
+        22000
+      ];
+    };
   };
 }
