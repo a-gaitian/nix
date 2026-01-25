@@ -150,6 +150,7 @@ in
       frps.enable = true;
       virtualisation.enable = true;
       couchdb.enable = true;
+      syncthing.enable = true;
     };
   };
 
