@@ -40,6 +40,14 @@ in {
           ENABLE_BASIC_AUTHENTICATION = false;
           ENABLE_PASSKEY_AUTHENTICATION = false;
         };
+        mailer = {
+          ENABLED = true;
+          PROTOCOL = "smtp+starttls";
+          SMTP_ADDR = host-email;
+          SMTP_PORT = 587;
+          USER = "gitea@${host}";
+          FROM = "Gitea <gitea@${host}>";
+        };
       };
     };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
