@@ -56,15 +56,12 @@ in {
         };
       };
     };
-    services.gitea-actions-runner.instances =  let
-      mkRunner = i: {
-        enable = true;
-        name = "runner-${i}";
-        url = "https://gitea.gaitian.dev";
-        tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
-        labels = [ "linux" "x86_64" ];
-      };
-    in lib.genAttrs [ "alpha" "beta" "gamma" "delta" "epsilon" ] (i: mkRunner i);
+    services.gitea-actions-runner.instances.host =  {
+      enable = true;
+      name = "host";
+      url = "https://gitea.gaitian.dev";
+      tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
+    };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
