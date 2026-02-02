@@ -67,15 +67,15 @@ in {
         "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04"
         "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04"
 
-        "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest-slim"
-        "ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04-slim"
-        "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04-slim"
-        "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04-slim"
+        "ubuntu-latest-slim:docker://docker.gitea.com/runner-images:ubuntu-latest-slim"
+        "ubuntu-24.04-slim:docker://docker.gitea.com/runner-images:ubuntu-24.04-slim"
+        "ubuntu-22.04-slim:docker://docker.gitea.com/runner-images:ubuntu-22.04-slim"
+        "ubuntu-20.04-slim:docker://docker.gitea.com/runner-images:ubuntu-20.04-slim"
 
-        "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest-full"
-        "ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04-full"
-        "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04-full"
-        "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04-full"
+        "ubuntu-latest-full:docker://docker.gitea.com/runner-images:ubuntu-latest-full"
+        "ubuntu-24.04-full:docker://docker.gitea.com/runner-images:ubuntu-24.04-full"
+        "ubuntu-22.04-full:docker://docker.gitea.com/runner-images:ubuntu-22.04-full"
+        "ubuntu-20.04-full:docker://docker.gitea.com/runner-images:ubuntu-20.04-full"
       ];
     };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
