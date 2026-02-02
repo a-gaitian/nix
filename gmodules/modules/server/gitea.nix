@@ -27,10 +27,13 @@ in {
           DOMAIN = "gitea.${host}";
           ROOT_URL = "https://gitea.${host}/";
           HTTP_PORT = 3001;
-          DISABLE_REGISTRATION = true;
         };
         service = {
+          DISABLE_REGISTRATION = true;
           ENABLE_PASSWORD_SIGNIN_FORM = false;
+          ENABLE_NOTIFY_MAIL = true;
+          ENABLE_BASIC_AUTHENTICATION = false;
+          ENABLE_PASSKEY_AUTHENTICATION = false;
         };
       };
     };
