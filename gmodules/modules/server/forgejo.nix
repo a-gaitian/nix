@@ -101,7 +101,7 @@ in {
     '';
 
     networking.firewall = {
-      trustedInterfaces = [ "br-+" ];
+      trustedInterfaces = [ "br+" "podman+" "veth+" ];
       allowedTCPPorts = [
         2222
       ];
