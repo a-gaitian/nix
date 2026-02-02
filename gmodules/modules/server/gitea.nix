@@ -28,7 +28,9 @@ in {
           ROOT_URL = "https://gitea.${host}/";
           HTTP_PORT = 3001;
           DISABLE_REGISTRATION = true;
-          service.ENABLE_PASSWORD_SIGNIN_FORM = false;
+          other = {
+            ENABLE_PASSWORD_SIGNIN_FORM = false;
+          };
         };
       };
     };
