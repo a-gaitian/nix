@@ -56,5 +56,10 @@ in {
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
+    networking.firewall = {
+      allowedTCPPorts = [
+        2222
+      ];
+    };
   };
 }
