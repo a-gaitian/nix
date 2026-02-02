@@ -61,10 +61,10 @@ in {
         enable = true;
         name = "runner-${i}";
         url = "https://gitea.gaitian.dev";
-        tokenFile = "${config.services.gitea.customDir}/conf/runner_${i}_token";
+        tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
         labels = [ "linux" "x86_64" ];
       };
-    in lib.genAttrs [ "1" ] (i: mkRunner i);
+    in lib.genAttrs [ "1" "2" "3" "4" "5" ] (i: mkRunner i);
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
