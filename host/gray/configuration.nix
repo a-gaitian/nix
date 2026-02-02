@@ -151,6 +151,7 @@ in
       virtualisation.enable = true;
       couchdb.enable = true;
       syncthing.enable = true;
+      gitea.enable = true;
     };
   };
 
