@@ -45,8 +45,8 @@ in {
           UPDATE_AVATAR = true;
         };
         service = {
-#          SHOW_REGISTRATION_BUTTON = false;
-#          ENABLE_PASSWORD_SIGNIN_FORM = false;
+          SHOW_REGISTRATION_BUTTON = false;
+          ENABLE_INTERNAL_SIGNIN = false;
           ENABLE_NOTIFY_MAIL = true;
           ENABLE_BASIC_AUTHENTICATION = false;
         };
