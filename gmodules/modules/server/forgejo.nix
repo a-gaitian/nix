@@ -25,7 +25,6 @@ in {
         backupDir = "${storage}/forgejo/dump";
       };
       database = {
-        host = "/var/run/postgresql";
         socket = "/var/run/postgresql";
         type = "postgres";
       };
