@@ -28,6 +28,9 @@ in {
           ROOT_URL = "https://gitea.${host}/";
           HTTP_PORT = 3001;
         };
+        openid = {
+          ENABLE_OPENID_SIGNUP = true;
+        };
         service = {
           DISABLE_REGISTRATION = true;
           ENABLE_PASSWORD_SIGNIN_FORM = false;
