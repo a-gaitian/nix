@@ -15,6 +15,8 @@ cd host/gray
 
 export NIXPKGS_ALLOW_UNFREE=1
 
+ulimit -n 65536
+
 direnv exec . nixos-rebuild switch --no-flake --impure
 
 ENDSSH
