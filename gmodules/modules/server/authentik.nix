@@ -28,7 +28,7 @@ in {
           host = host-email;
           use_tls = true;
           username = "authentik@${host}";
-          from = "authentik@${host}";
+          from = "Authentik Service <authentik@${host}>";
         };
         disable_startup_analytics = true;
       };
