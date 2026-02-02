@@ -88,6 +88,9 @@ in {
         runner = {
           capacity = 4;
         };
+        cache = {
+          enabled = true;
+        };
       };
       labels = [
         "debian:docker://code.forgejo.org/oci/debian:latest"
