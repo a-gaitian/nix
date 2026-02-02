@@ -61,7 +61,7 @@ in {
       name = "host";
       url = "https://gitea.gaitian.dev";
       tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
-      labels = [ "native" ];
+      labels = [ "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest" ];
     };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
