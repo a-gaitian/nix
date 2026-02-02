@@ -25,7 +25,7 @@ in {
       settings = {
         email = {
           host = "mail.${host}";
-          use_tls = true;
+          use_ssl = true;
           username = "authentik@${host}";
           from = "authentik@${host}";
         };
