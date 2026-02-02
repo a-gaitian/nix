@@ -38,6 +38,7 @@ in {
           HTTP_PORT = 3001;
           START_SSH_SERVER = true;
           SSH_LISTEN_PORT = 2222;
+          SSH_USER = "git";
         };
         oauth2_client = {
           ENABLE_AUTO_REGISTRATION = true;
