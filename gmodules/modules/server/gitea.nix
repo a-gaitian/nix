@@ -51,6 +51,9 @@ in {
           USER = "gitea@${host}";
           FROM = "Gitea <gitea@${host}>";
         };
+        admin = {
+          USER_DISABLED_FEATURES = "deletion, manage_credentials, change_username, change_full_name";
+        };
       };
     };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
