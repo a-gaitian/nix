@@ -23,7 +23,7 @@ in {
         enable = true;
         backupDir = "${storage}/gitea/dump";
       };
-      mailerPasswordFile = "${config.services.gitea.customDir}/mailer_passwd";
+      mailerPasswordFile = "${config.services.gitea.customDir}/conf/mailer_passwd";
       settings = {
         server = {
           DOMAIN = "gitea.${host}";
