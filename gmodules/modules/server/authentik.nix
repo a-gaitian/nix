@@ -27,7 +27,7 @@ in {
           host = "sm15.hosting.reg.ru";
           use_tls = true;
           username = "authentik@${host}";
-          from = "authentik@${host}";
+          from = "gaitian.dev authentik";
         };
         disable_startup_analytics = true;
       };
