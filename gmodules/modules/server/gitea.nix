@@ -61,7 +61,22 @@ in {
       name = "host";
       url = "https://gitea.gaitian.dev";
       tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
-      labels = [ "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest" ];
+      labels = [
+        "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest"
+        "ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04"
+        "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04"
+        "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04"
+
+        "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest-slim"
+        "ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04-slim"
+        "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04-slim"
+        "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04-slim"
+
+        "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest-full"
+        "ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04-full"
+        "ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04-full"
+        "ubuntu-20.04:docker://docker.gitea.com/runner-images:ubuntu-20.04-full"
+      ];
     };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
