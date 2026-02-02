@@ -84,7 +84,6 @@ in {
       enable = true;
       name = "host";
       url = "https://forgejo.gaitian.dev";
-      tokenFile = "${config.services.forgejo.customDir}/conf/runner_token";
       settings = {
         runner = {
           capacity = 4;
