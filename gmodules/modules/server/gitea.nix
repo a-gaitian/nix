@@ -61,6 +61,14 @@ in {
       name = "host";
       url = "https://gitea.gaitian.dev";
       tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
+      settings = {
+        runner = {
+          capacity = 4;
+        };
+        cache = {
+          port = 4468;
+        };
+      };
       labels = [
         "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest"
         "ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04"
@@ -84,6 +92,7 @@ in {
     networking.firewall = {
       allowedTCPPorts = [
         2222
+        4468
       ];
     };
   };
