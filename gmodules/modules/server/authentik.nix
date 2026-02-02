@@ -7,7 +7,7 @@ let
 
   authentik-nix = import (builtins.fetchTarball {
     url = "https://github.com/nix-community/authentik-nix/archive/version/2025.12.1.tar.gz";
-    sha256 = "";
+    sha256 = "14jl9i2zsb7xp4s4n9isab8px83ls3ldndynm4ivpph8hl08ps7m";
   });
 in {
   options.gmodules.server.authentik = {
