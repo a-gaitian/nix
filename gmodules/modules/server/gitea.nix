@@ -26,11 +26,13 @@ in {
         server = {
           DOMAIN = "gitea.${host}";
           ROOT_URL = "https://gitea.${host}/";
+          HTTP_PORT = "3001";
+          # DISABLE_REGISTRATION = true;
         };
       };
     };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
-      reverse_proxy localhost:3000
+      reverse_proxy localhost:3001
     '';
   };
 }
