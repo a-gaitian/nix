@@ -64,10 +64,7 @@ in {
         tokenFile = "/storage-fast/gitea/custom/conf/runner_${i}_token";
         labels = [ "linux" "x86_64" ];
       };
-    in {
-      services.gitea-actions-runner =
-          lib.genAttrs [ "1" "2" "3" ] (i: mkRunner i);
-    };
+    in lib.genAttrs [ "1" "2" "3" ] (i: mkRunner i);
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
