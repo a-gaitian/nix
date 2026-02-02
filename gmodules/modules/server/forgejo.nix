@@ -63,7 +63,6 @@ in {
           EXTERNAL_USER_DISABLE_FEATURES = "deletion";
         };
         other = {
-          SHOW_FOOTER_VERSION = false;
           SHOW_FOOTER_POWERED_BY = false;
         };
       };
