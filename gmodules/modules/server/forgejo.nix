@@ -62,6 +62,10 @@ in {
         admin = {
           EXTERNAL_USER_DISABLE_FEATURES = "deletion";
         };
+        other = {
+          SHOW_FOOTER_VERSION = false;
+          SHOW_FOOTER_POWERED_BY = false;
+        };
       };
     };
 
@@ -75,11 +79,30 @@ in {
       } ];
     };
 
+    services.gitea-actions-runner.package = pkgs.forgejo-runner;
+    services.gitea-actions-runner.instances.host =  {
+      enable = true;
+      name = "host";
+      url = "https://forgejo.gaitian.dev";
+      tokenFile = "${config.services.forgejo.customDir}/conf/runner_token";
+      settings = {
+        runner = {
+          capacity = 4;
+        };
+      };
+      labels = [
+        "debian:code.forgejo.org/oci/debian:latest"
+        "docker:docker://code.forgejo.org/oci/alpine:latest"
+        "bare-metal:host"
+      ];
+    };
+
     services.caddy.virtualHosts."forgejo.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
 
     networking.firewall = {
+      trustedInterfaces = [ "br-+" ];
       allowedTCPPorts = [
         2222
       ];
