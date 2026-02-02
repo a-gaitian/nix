@@ -57,7 +57,7 @@ in {
           USER = "forgejo@${host}";
           FROM = "Forgejo <forgejo@${host}>";
         };
-        log.LEVEL = "debug";
+        log.LEVEL = "Debug";
         admin = {
           EXTERNAL_USER_DISABLE_FEATURES = "deletion";
         };
