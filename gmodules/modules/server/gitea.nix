@@ -56,9 +56,9 @@ in {
         };
       };
     };
-    services.gitea-actions-runner.instances.host =  {
+    services.gitea-actions-runner.instances.self-hosted =  {
       enable = true;
-      name = "host";
+      name = "self-hosted";
       url = "https://gitea.gaitian.dev";
       tokenFile = "${config.services.gitea.customDir}/conf/runner_token";
       labels = [ "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest" ];
