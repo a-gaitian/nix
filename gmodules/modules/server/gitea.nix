@@ -29,6 +29,10 @@ in {
           ROOT_URL = "https://gitea.${host}/";
           HTTP_PORT = 3001;
         };
+        oauth2_client = {
+          ENABLE_AUTO_REGISTRATION = true;
+          UPDATE_AVATAR = true;
+        };
         service = {
           SHOW_REGISTRATION_BUTTON = false;
           ENABLE_PASSWORD_SIGNIN_FORM = false;
