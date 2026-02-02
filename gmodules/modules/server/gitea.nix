@@ -54,6 +54,10 @@ in {
         admin = {
           EXTERNAL_USER_DISABLE_FEATURES = "deletion, manage_credentials, change_username, change_full_name";
         };
+        other = {
+          SHOW_FOOTER_VERSION = false;
+          SHOW_FOOTER_POWERED_BY = false;
+        };
       };
     };
     services.gitea-actions-runner.instances.host =  {
