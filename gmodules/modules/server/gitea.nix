@@ -13,7 +13,6 @@ in {
   config = mkIf cfg.enable {
     services.gitea = {
       enable = true;
-      openDefaultPorts = true;
       stateDir = "${fastStorage}/gitea";
       lfs = {
         enable = true;
