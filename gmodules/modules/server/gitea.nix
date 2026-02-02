@@ -56,6 +56,18 @@ in {
         };
       };
     };
+    services.gitea-actions-runner.instances =  let
+      mkRunner = i: {
+        enable = true;
+        name = "runner-${toString i}";
+        url = "https://gitea.gaitian.dev";
+        tokenFile = "/storage-fast/gitea/custom/conf/runner_${toString i}_token";
+        labels = [ "linux" "x86_64" ];
+      };
+    in {
+      services.gitea-actions-runner =
+          lib.genAttrs [ 1 2 3 ] (i: mkRunner i);
+    };
     services.caddy.virtualHosts."gitea.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
