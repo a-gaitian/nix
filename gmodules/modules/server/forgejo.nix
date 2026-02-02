@@ -91,7 +91,7 @@ in {
       };
       labels = [
         "debian:docker://code.forgejo.org/oci/debian:latest"
-        "docker:docker://code.forgejo.org/oci/alpine:latest"
+        "docker:docker://code.forgejo.org/oci/node:25-alpine"
         "bare-metal:host"
       ];
     };
