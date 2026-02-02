@@ -24,7 +24,7 @@ in {
       environmentFile = "/var/secrets/authentik.env";
       settings = {
         email = {
-          host = "sm15.hosting.reg.ru";
+          host = "mail.${host}";
           use_tls = true;
           username = "authentik@${host}";
           from = "authentik@${host}";
