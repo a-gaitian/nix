@@ -15,6 +15,9 @@ in {
   options.gmodules.server.host = mkOption {
     type = types.str;
   };
+  options.gmodules.server.host-email = mkOption {
+      type = types.str;
+    };
 
   config = mkIf cfg.enable {
     services.caddy = {

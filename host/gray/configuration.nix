@@ -130,6 +130,7 @@ in
     server = {
       inherit sshPubKeys;
       host = "gaitian.dev";
+      host-email = "sm15.hosting.reg.ru";
       storage = {
         main = "/storage";
         fast = "/storage-fast";

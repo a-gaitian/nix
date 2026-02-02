@@ -2,6 +2,7 @@
 let
   inherit (lib) mkEnableOption mkOption types mkIf length;
   host = config.gmodules.server.host;
+  host-email = config.gmodules.server.host-email;
   storage = config.gmodules.server.storage.main;
   cfg = config.gmodules.server.authentik;
 
@@ -24,7 +25,7 @@ in {
       environmentFile = "/var/secrets/authentik.env";
       settings = {
         email = {
-          host = "sm15.hosting.reg.ru";
+          host = host-email;
           use_tls = true;
           username = "authentik@${host}";
           from = "authentik@${host}";
