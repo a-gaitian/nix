@@ -52,7 +52,7 @@ in {
           FROM = "Gitea <gitea@${host}>";
         };
         admin = {
-          USER_DISABLED_FEATURES = "deletion, manage_credentials, change_username, change_full_name";
+          EXTERNAL_USER_DISABLE_FEATURES = "deletion, manage_credentials, change_username, change_full_name";
         };
       };
     };
