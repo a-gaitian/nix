@@ -26,7 +26,7 @@ in {
 
     services.postgresql = {
       ensureDatabases = [
-        "woodpecker"
+        "woodpecker-server"
       ];
       ensureUsers = [ {
         name = "woodpecker-server";
