@@ -65,6 +65,9 @@ in {
         other = {
           SHOW_FOOTER_POWERED_BY = false;
         };
+        actions = {
+          ENABLED = false;
+        };
       };
     };
 
@@ -77,31 +80,11 @@ in {
         ensureDBOwnership = true;
       } ];
     };
-
-    services.gitea-actions-runner.package = pkgs.forgejo-runner;
-    services.gitea-actions-runner.instances.host =  {
-      enable = true;
-      name = "host";
-      url = "https://forgejo.gaitian.dev";
-      tokenFile = "${config.services.forgejo.customDir}/conf/runner_token";
-      settings = {
-        runner = {
-          capacity = 4;
-        };
-      };
-      labels = [
-        "debian:docker://code.forgejo.org/oci/debian:latest"
-        "docker:docker://code.forgejo.org/oci/node:24-bookworm"
-        "bare-metal:host"
-      ];
-    };
-
     services.caddy.virtualHosts."forgejo.${host}".extraConfig = ''
       reverse_proxy localhost:3001
     '';
 
     networking.firewall = {
-      trustedInterfaces = [ "br+" "podman+" "veth+" ];
       allowedTCPPorts = [
         2222
       ];

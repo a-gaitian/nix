@@ -27,5 +27,6 @@ in {
         podman-compose
       ];
     };
+    trustedInterfaces = [ "br+" "podman+" "veth+" ];
   };
 }
