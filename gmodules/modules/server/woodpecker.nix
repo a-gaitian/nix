@@ -21,7 +21,7 @@ in {
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
       };
-      environmentFile = ./woodpecker.secret;
+      environmentFile = /var/secrets/woodpecker.env;
     };
 
     services.postgresql = {
