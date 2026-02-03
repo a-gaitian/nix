@@ -24,6 +24,7 @@ in {
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
         WOODPECKER_ADMIN = "albert";
+        DISABLE_VERSION_CHECK = "true";
       };
       environmentFile = /var/secrets/woodpecker.env;
     };
@@ -44,6 +45,17 @@ in {
     services.caddy.virtualHosts."woodpecker-agent.${host}".extraConfig = ''
       reverse_proxy h2c://localhost:9001
     '';
+
+    services.woodpecker-agents.agents.host = {
+      enable = true;
+      environment = {
+        WOODPECKER_SERVER = "woodpecker-agent.${host}";
+        WOODPECKER_BACKEND = "docker";
+        DOCKER_HOST = "unix:///run/podman/podman.sock";
+        WOODPECKER_MAX_WORKFLOWS = "8";
+      };
+      environmentFile = /var/secrets/woodpecker-agent.env;
+    };
 
     networking.firewall = {
       allowedTCPPorts = [
