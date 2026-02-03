@@ -54,7 +54,7 @@ in {
         DOCKER_HOST = "unix:///run/podman/podman.sock";
         WOODPECKER_MAX_WORKFLOWS = "8";
       };
-      environmentFile = /var/secrets/woodpecker-agent.env;
+      environmentFile = [ /var/secrets/woodpecker-agent.env ];
     };
 
     networking.firewall = {
