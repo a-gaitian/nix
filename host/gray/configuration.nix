@@ -153,6 +153,7 @@ in
       couchdb.enable = true;
       syncthing.enable = true;
       forgejo.enable = true;
+      woodpecker.enable = true;
     };
   };
 
