@@ -12,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.woodpecker = {
+    services.woodpecker-server = {
       enable = true;
       environment = {
         WOODPECKER_DATABASE_DRIVER = "woodpecker";
