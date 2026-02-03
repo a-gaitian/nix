@@ -29,8 +29,11 @@ in {
         "woodpecker"
       ];
       ensureUsers = [ {
-        name = "woodpecker";
-        ensureDBOwnership = true;
+        name = "woodpecker-server";
+        ensurePermissions = {
+          "DATABASE \"woodpecker\"" = "ALL PRIVILEGES";
+          "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES";
+        };
       } ];
     };
 
