@@ -45,6 +45,7 @@ in {
 
     services.woodpecker-agents.agents.host = {
       enable = true;
+      extraGroups = [ "podman" ];
       environment = {
         WOODPECKER_SERVER = "localhost:9001";
         WOODPECKER_BACKEND = "docker";
