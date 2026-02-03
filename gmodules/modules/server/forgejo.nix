@@ -68,6 +68,9 @@ in {
         actions = {
           ENABLED = false;
         };
+        webhook = {
+          ALLOWED_HOST_LIST = "external,loopback";
+        };
       };
     };
 
