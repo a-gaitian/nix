@@ -24,7 +24,7 @@ in {
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
         WOODPECKER_ADMIN = "albert";
-        DISABLE_VERSION_CHECK = "true";
+        WOODPECKER_DISABLE_VERSION_CHECK = "true";
       };
       environmentFile = /var/secrets/woodpecker.env;
     };
