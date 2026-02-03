@@ -16,7 +16,7 @@ in {
       enable = true;
       environment = {
         WOODPECKER_DATABASE_DRIVER = "postgres";
-        WOODPECKER_DATABASE_DATASOURCE = "postgres:///var/run/postgresql/woodpecker";
+        WOODPECKER_DATABASE_DATASOURCE = "postgres:///var/run/postgresql/woodpecker?sslmode=disable";
         WOODPECKER_HOST = "https://woodpecker.${host}";
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
