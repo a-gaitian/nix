@@ -59,7 +59,7 @@ in {
 
     networking.firewall = {
       allowedTCPPorts = [
-        2222
+        9001
       ];
     };
   };
