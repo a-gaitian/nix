@@ -20,6 +20,7 @@ in {
         WOODPECKER_HOST = "https://woodpecker.${host}";
         WOODPECKER_SERVER_ADDR = ":3007";
         WOODPECKER_GRPC_ADDR = ":9001";
+        WOODPECKER_OPEN = "true";
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
       };
