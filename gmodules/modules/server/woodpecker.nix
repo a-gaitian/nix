@@ -19,6 +19,7 @@ in {
         WOODPECKER_DATABASE_DATASOURCE = "postgres:///woodpecker-server?host=/var/run/postgresql";
         WOODPECKER_HOST = "https://woodpecker.${host}";
         WOODPECKER_SERVER_ADDR = ":3007";
+        GRPC_ADDR = ":9001";
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
       };
