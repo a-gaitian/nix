@@ -18,6 +18,7 @@ in {
         WOODPECKER_DATABASE_DRIVER = "postgres";
         WOODPECKER_DATABASE_DATASOURCE = "postgres:///woodpecker-server?host=/var/run/postgresql";
         WOODPECKER_HOST = "https://woodpecker.${host}";
+        WOODPECKER_SERVER_ADDR = ":3007";
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
       };
@@ -35,7 +36,7 @@ in {
     };
 
     services.caddy.virtualHosts."woodpecker.${host}".extraConfig = ''
-      reverse_proxy localhost:8000
+      reverse_proxy localhost:3007
     '';
 
     networking.firewall = {
