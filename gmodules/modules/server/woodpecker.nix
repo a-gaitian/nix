@@ -23,6 +23,7 @@ in {
         WOODPECKER_OPEN = "true";
         WOODPECKER_FORGEJO = "true";
         WOODPECKER_FORGEJO_URL = "https://forgejo.${host}";
+        WOODPECKER_ADMIN = "albert";
       };
       environmentFile = /var/secrets/woodpecker.env;
     };
@@ -39,6 +40,9 @@ in {
 
     services.caddy.virtualHosts."woodpecker.${host}".extraConfig = ''
       reverse_proxy localhost:3007
+    '';
+    services.caddy.virtualHosts."woodpecker-agent.${host}".extraConfig = ''
+      reverse_proxy h2c://localhost:9001
     '';
 
     networking.firewall = {
