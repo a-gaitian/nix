@@ -48,7 +48,6 @@ in {
           SHOW_REGISTRATION_BUTTON = false;
           ENABLE_INTERNAL_SIGNIN = false;
           ENABLE_NOTIFY_MAIL = true;
-          ENABLE_BASIC_AUTHENTICATION = false;
         };
         mailer = {
           ENABLED = true;
