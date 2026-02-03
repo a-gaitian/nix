@@ -48,6 +48,7 @@ in {
       extraGroups = [ "podman" ];
       environment = {
         WOODPECKER_SERVER = "localhost:9001";
+        WOODPECKER_HEALTHCHECK_ADDR = ":3008";
         WOODPECKER_BACKEND = "docker";
         DOCKER_HOST = "unix:///run/podman/podman.sock";
         WOODPECKER_MAX_WORKFLOWS = "8";
