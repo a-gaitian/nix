@@ -70,6 +70,7 @@ in {
           base_url = "https://search.${host}";
           port = 64712;
           bind_address = "127.0.0.1";
+          secret_key = "AAzPuJgRWkhDvlIgtoXDr3KO";
           limiter = true;
           public_instance = true;
           image_proxy = true;
