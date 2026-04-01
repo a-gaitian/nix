@@ -155,6 +155,7 @@ in
       forgejo.enable = true;
       woodpecker.enable = true;
       searx.enable = true;
+      headplane.enable = true;
     };
   };
 
