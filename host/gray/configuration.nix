@@ -154,6 +154,7 @@ in
       syncthing.enable = true;
       forgejo.enable = true;
       woodpecker.enable = true;
+      searx.enable = true;
     };
   };
 
