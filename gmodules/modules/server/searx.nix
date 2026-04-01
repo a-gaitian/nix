@@ -31,7 +31,7 @@ in {
           };
         };
       };
-      settings.server = {
+      settings = {
         # Instance settings
         general = {
           debug = false;
