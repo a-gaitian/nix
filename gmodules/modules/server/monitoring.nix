@@ -56,6 +56,9 @@ in {
           domain = "grafana.${host}";
           root_url = "https://grafana.${host}";
         };
+        security = {
+          secret_key = "SW2YcwTIb9zpOOhoPsMm";
+        };
       };
     };
     services.caddy.virtualHosts."grafana.${host}".extraConfig = ''
