@@ -22,7 +22,7 @@ in {
     };
 
     environment.systemPackages = with pkgs;
-      lib.optional cfg.neofetch neofetch
+      lib.optional cfg.neofetch fastfetch
       ++ lib.optional cfg.p7z p7zip-rar
       ++ lib.optional cfg.file file;
 
