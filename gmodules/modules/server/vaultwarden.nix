@@ -13,20 +13,20 @@ in {
   config = mkIf cfg.enable {
     services.vaultwarden = {
       enable = true;
-      package = pkgs.vaultwarden.overrideAttrs (oldAttrs: rec {
-        name = "vaultwarden";
-        version = "8e7eeab";
-        src = pkgs.fetchFromGitHub {
-          owner = "dani-garcia";
-          repo = name;
-          rev = "8e7eeab2931461081c5231939a3e1b882bf0f2b3";
-          hash = "sha256-4s5cj55npj5oFelaFKElFNT9SRx9EwHZUwCmG3Im6lE=";
-        };
-        cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-          inherit src;
-          hash = "sha256-YYAHSbdYdc23KKYhXfSchTabzx2DTDGEfIUw9DyLGCg=";
-        };
-      });
+#      package = pkgs.vaultwarden.overrideAttrs (oldAttrs: rec {
+#        name = "vaultwarden";
+#        version = "8e7eeab";
+#        src = pkgs.fetchFromGitHub {
+#          owner = "dani-garcia";
+#          repo = name;
+#          rev = "8e7eeab2931461081c5231939a3e1b882bf0f2b3";
+#          hash = "sha256-4s5cj55npj5oFelaFKElFNT9SRx9EwHZUwCmG3Im6lE=";
+#        };
+#        cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+#          inherit src;
+#          hash = "sha256-YYAHSbdYdc23KKYhXfSchTabzx2DTDGEfIUw9DyLGCg=";
+#        };
+#      });
       backupDir = "${storage}/vaultwarden/backup";
       environmentFile = "/var/secrets/vaultwarden.env";
       config = {
