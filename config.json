@@ -1,0 +1,219 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {
+    "hosts": {
+      "dns.google": [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.alidns.com": [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "one.one.one.one": [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "1dot1dot1dot1.cloudflare-dns.com": [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "cloudflare-dns.com": [
+        "104.16.249.249",
+        "104.16.248.249",
+        "2606:4700::6810:f8f9",
+        "2606:4700::6810:f9f9"
+      ],
+      "dns.cloudflare.com": [
+        "104.16.132.229",
+        "104.16.133.229",
+        "2606:4700::6810:84e5",
+        "2606:4700::6810:85e5"
+      ],
+      "dot.pub": [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "doh.pub": [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "dns.quad9.net": [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "dns.yandex.net": [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ],
+      "dns.sb": [
+        "185.222.222.222",
+        "2a09::"
+      ],
+      "dns.umbrella.com": [
+        "208.67.220.220",
+        "208.67.222.222",
+        "2620:119:35::35",
+        "2620:119:53::53"
+      ],
+      "dns.sse.cisco.com": [
+        "208.67.220.220",
+        "208.67.222.222",
+        "2620:119:35::35",
+        "2620:119:53::53"
+      ],
+      "engage.cloudflareclient.com": [
+        "162.159.192.1"
+      ]
+    },
+    "servers": [
+      {
+        "address": "https://dns.alidns.com/dns-query",
+        "domains": [
+          "freedom.gaitian.dev"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "https://dns.alidns.com/dns-query",
+        "domains": [
+          "geosite:private"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "223.5.5.5",
+        "domains": [
+          "full:dns.alidns.com",
+          "full:cloudflare-dns.com"
+        ],
+        "skipFallback": true
+      },
+      "https://cloudflare-dns.com/dns-query"
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "127.0.0.1",
+      "protocol": "mixed",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "freedom.gaitian.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "53e4922f-9fd0-4a21-995b-cfef73de4e12",
+                "email": "t@t.tt",
+                "security": "auto",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "xhttpSettings": {
+          "path": "/api/v1/data",
+          "host": "freedom.gaitian.dev",
+          "mode": "auto"
+        },
+        "realitySettings": {
+          "serverName": "www.nvidia.com",
+          "fingerprint": "chrome",
+          "show": false,
+          "publicKey": "xDq-iOWI-JWT2cAe50oktGcV5qpP8JJGjpgzvCAobSA",
+          "shortId": "1bf1d6",
+          "spiderX": "/",
+          "mldsa65Verify": "zbCQspn9TT6UCeYIE0sb275813Cwc3dG8sHvFsyyH9t6il4PHPeRGrmRgW47VwTGTjB4na9AFmS67gTXRue6Q3DKyoXChvk9DAs4xkFpzT7J-NNquIK4XeOVncJH-54SCJ5CQ8CJfCOKu7W45Cc4okQjf8azg3a7pPMQTC7W9Hlqy426Jya30XbLi-QZMWq-SPY-sIMGnTQxM_ghIIFBTClncl1L0wTGmnUbjfJyyPm3snpA43-KpavbEWPB7Djqcca7lCibXr_FexNQXZ4XtWkeAnUOe5JIGieKEOCo9E0ah5mivg2DN8h__fMeWKm7gNCun_yNiD0omVlnwJlcgtaxOd2v3uBGQbRQ9ernu9oVN60V1eW9g0FLXtBLp9to2NBsWfo68DtNosdJ5s9lj4_8tkOfqVkoUbP_FpURgPJJPOLkV2PP85iSKAQXjPeHAMeS-XHy8IItC3FIWD3u9UMW5HGEHvYZDYD-trIg8uw912xR_jG6S1Xr80e18Nzo7z1wQ3debSrcNeqYEZFf7-qrly2dS_REtmoHSK72vk8Yi9FfifCSsHGKVSSNpuCjxg-dAfA3dP_cU_Y0OWdm_xTD19fLxqVehkXhm0WVwIARn80gbbZj70c4AMbRSzXEaYG0vhdxRKv-ULyBittlP7rhFHdeKxK1GquiUPreB6wUnhnU2PSVJ_S8Fa7A1EngdE2rXHs3_ad0JUQ8ZPlrTqFsDvQOnttGC5a4FR1EeKpv7XaGZyA0kq__8XDxtOjS4Ax8lgVtabyU5wJI0Sk-UuUuNxZNKJhzm_Up-m13TyYZqYx1ng0_CV41yk4SBIA04SOl48lPXag3wXJX2QgRjfxpCZBG_jsgxCQrwPIw4UuDKXkSXs-7zilneQWvfc1P6AqZJOek9nKVfFyRacxeyHJnM8lLst3X6kPLIkGyfFe8qgQsuYgCzYLdCiKKm_xuw8qNb8izwHXgHe1a4Bp6tadGB2R817L_1EdlHogDaMgoz2W_S3CXH4oTjcANJQ7L24GHV3gWQg17Y5-ljNq-KVbZfgKoVMNhkiHDCY2eu9pQg0X0RYBwanoQGe1qFmO2TSr94NC98z579jNF54x0PllkWc7RFjMVWB8nR5-ZeOadNreGD1_CbpfIQhd35Oq8D_qxtM4vwqvXwAtxYA6aw6q07D55MgAuVJZSSgsfyjrH9qlJwLkipGYirmCS7jbh1N4IfpFtC8P5WZpJYv368hcbS7b7lUADb5Wzw9b_i_FEvno9hHdi55n52P3CWdXZoag-y-PIWW5qpWe3-nLpileG_3PnaRa6w2XteJjVTlKUoJ7-UMrt9nPdKYpkYGAChCJ7fikkr7OmT4Qtim6viK844mSY3V5P4iZF6MUK9ugknwlgrFdUsqaEl2-DWBVsE3FlWd3-axtFpGSHNBF3ixJLg2JHnzJCE89qt_ZgVwcDFQl3WI9Gppr0rACfVG5x1v0XItWGJ9oHAgjZ_Nzhs0b2nEinh9ABqG2JPiudppr1WC113smm0FRckGpLHQ6FP1eNKIZzqP67LVECGXFKpNCXVJeXCHRMyKO7zBtx2XF9zVz1nxAGO37n6VhlWFs5NLIQ1LvgMAPjucGn3IU8YjVMyLcyBNC5pt5RYrNPK6gzIk3hDIh42I34ze2hdRrFxsAmXnAWgzbxD-i0xUntvFUQc-FoaGPVOsdReWCQWSjW20clA8OhgemkEH6cn87-9c_s3_J50OonN_l0JK36uuaMVNRNL62GymyAc3HwdDbGxFi1dNVn4T_d7kgS952symQBsrRfzte3R_nNDnBCWfXUYapsUTYHSGlVFjFOTLnKlxiuKwawfmgWegbvY3L-Hedd_lnZLUfl4vkkxvIJl4Mt47AOd98_Uoul_uC0dmvkUjzlPF6_hx8tzBdJPchYhCGyz2UEJjClCOg4DFf7lky-G2riMPr4xi7pgSvmWRYQbCNiWGi9R-5DtFuRIqpJcWqyPslPncwZDJE3QpFNdRGPt08exHulPlIrU89ceF7e3UvcI7rWLlaXnSEKv1k1_uaMN-wGBrctLHkM1qZTOD3sU1GNIGBTDPNMIfOfrpNBuO7Dmx8rpZ6CgGGLNaC8NihmTF_js2DdDRY8Bdyb4N1IkP9AD8X3TiiDgZ0Hlv02TAPZ5nqS-TPWLOieAVqJ6utU1n7-_k_ljBg5w8MFpks4oROy0dNjImGqx25zkrLaBv5ea2COpYlcBAk2dNRNcrDMlc6AGPlnguxC9k6H4mbeYm3oEubPVE12LfBaxCmaabQVvOYXH92I9gzvHLoo24JxBMzHdTeD3zLAd_sU3w2UVivX9WC9YFNahmh9LNnI4PMvs82Z2Jr4CVTb0LmrbeSK2aoceaZBZn3zn38qX5vJ63A9OcT9JGlo3sfRhHiQvgiYHQxsJgOAq8krTTg0nY6EmCkIiEkooqAvdgfY2AHFQRyu4wcJvc694bq0vBWUFYhdPbPqLBfOoHqIOf2McxwvXvAObr12ygHBgSYRIy95gcdv9gMaDqZAKlXHDhRlx-Wihvv2RwYUm2vq3it5RQKFvxDi2kdwDNtsJrm8LfzNBvbg9sV_-IFa6v4o2x8"
+        }
+      },
+      "mux": {
+        "enabled": false,
+        "concurrency": -1
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api"
+      },
+      {
+        "type": "field",
+        "port": "443",
+        "network": "udp",
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:private"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "geosite:private"
+        ]
+      },
+      {
+        "type": "field",
+        "port": "0-65535",
+        "outboundTag": "proxy"
+      }
+    ]
+  }
+}
