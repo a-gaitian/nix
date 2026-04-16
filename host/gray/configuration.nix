@@ -13,6 +13,10 @@ let
 in
 {
   system.stateVersion = "25.05";
+
+  nix.channel.enable = false;
+  nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
+
   imports = [
     (sources.disko + "/module.nix")
     (import "${gaitian-nix}/gmodules")
