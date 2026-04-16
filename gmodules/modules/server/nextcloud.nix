@@ -15,7 +15,7 @@ in {
   config = mkIf cfg.enable {
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud32;
+      package = pkgs.nextcloud33;
       inherit hostName;
       https = true;
       home = "${storage}/nextcloud/home";
