@@ -8,7 +8,7 @@ let
   ];
 
   sources = import ./npins;
-#  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs {};
   gaitian-nix = ../../.;
 in
 {
