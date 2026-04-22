@@ -43,6 +43,12 @@ in {
       reverse_proxy localhost:3007
     '';
 
+    networking.firewall = {
+      allowedTCPPorts = [
+        9001
+      ];
+    };
+
     services.woodpecker-agents.agents.host = {
       enable = true;
       extraGroups = [ "podman" ];
